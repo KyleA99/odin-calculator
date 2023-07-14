@@ -36,12 +36,14 @@ p, h1, h2, h3, h4, h5, h6 {
     border: solid 2px black;
     height: 35rem;
     max-width: 35rem;
+    border-radius: 2rem;
 }
 
 .screen {
     width: 100%;
     height: 4rem;
     border: solid 2px red;
+    border-radius: 1rem;
 }
 
 .row {
