@@ -49,6 +49,12 @@ function divideVariables(firstNumber, secondNumber) {
 }
 // console.log(divideVariables(firstNumber, secondNumber));
 
+/**
+ * Performs an arithmetic operation on two numbers based on the given operator and returns the result.
+ * @param {*} firstNumber - The first number operated on.
+ * @param {*} secondNumber - The second number operated on.
+ * @returns {number} The result of the arithmetic operation.
+ */
 function operate(firstNumber, secondNumber) {
     let operator = "+";
 
@@ -62,7 +68,7 @@ function operate(firstNumber, secondNumber) {
         return divideVariables(firstNumber, secondNumber);
     }
 }
-console.log(operate(firstNumber, secondNumber));
+// console.log(operate(firstNumber, secondNumber));
 
 function displayVariables() {
     const zeroButton = document.getElementById("zero-button");
