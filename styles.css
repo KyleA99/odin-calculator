@@ -29,12 +29,18 @@ p, h1, h2, h3, h4, h5, h6 {
     isolation: isolate;
 }
 
+main {
+    display: flex;
+    min-height: calc(100vh - 95px);
+}
+
 .calculator-container {
     display: flex;
     flex-direction: column;
     height: 35rem;
     max-width: 35rem;
     padding: 2rem;
+    margin: auto;
     border: solid 2px black;
     border-radius: 2rem;
     background-color: lightskyblue;
@@ -79,5 +85,6 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 4rem;
     height: 4rem;
     border-radius: 1rem;
-    background-color: lightgrey;
+    background-color: grey;
+    color: azure;
 }
