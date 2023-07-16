@@ -4,6 +4,7 @@
 let firstNumber = 10;
 let secondNumber = 3;
 let operator = ["+", "-", "*", "/"];
+let displayValue = "";
 
 /**
  * Adds two numbers together and returns the result.
@@ -73,55 +74,70 @@ function operate(firstNumber, secondNumber) {
 function displayVariables() {
     const zeroButton = document.getElementById("zero-button");
     zeroButton.addEventListener("click", function() {
-        console.log("0");
+      displayValue("0");
     });
 
     const oneButton = document.getElementById("one-button");
     oneButton.addEventListener("click", function() {
-        console.log("1");
+        displayValue("1");
     });
 
     const twoButton = document.getElementById("two-button");
     twoButton.addEventListener("click", function() {
-        console.log("2");
+        displayValue("2");
     });
 
     const threeButton = document.getElementById("three-button");
     threeButton.addEventListener("click", function() {
-        console.log("3");
+        displayValue("3");
     });
 
     const fourButton = document.getElementById("four-button");
     fourButton.addEventListener("click", function() {
-        console.log("4");
+        displayValue("4");
     });
 
     const fiveButton = document.getElementById("five-button");
     fiveButton.addEventListener("click", function() {
-        console.log("5");
+        displayValue("5");
     });
 
     const sixButton = document.getElementById("six-button");
     sixButton.addEventListener("click", function() {
-        console.log("6");
+        displayValue("6");
     });
 
     const sevenButton = document.getElementById("seven-button");
     sevenButton.addEventListener("click", function() {
-        console.log("7");
+        displayValue("7");
     });
 
     const eightButton = document.getElementById("eight-button");
     eightButton.addEventListener("click", function() {
-        console.log("8");
+        displayValue("8");
     });
 
     const nineButton = document.getElementById("nine-button");
     nineButton.addEventListener("click", function() {
-        console.log("9");
+        displayValue("9");
     });
-}
-displayVariables();
 
-// Need to call the value of displayVariables() into DOM and display in .screen.
-// This displayed-value in screen should be stored in a variable for future use.
+    function displayValue(value) {
+        console.log(value);
+        // Update the text content of screenContent
+        screenContent.textContent = value;
+    }
+}
+
+// Returns first element with id "screen"
+const screen = document.querySelector("#screen");
+
+// Creates a new div, and store it in the variable "screenContent"
+const screenContent = document.createElement("div");
+// Adds the class "screenContent" to the newly created div
+screenContent.classList.add("screenContent");
+// Stores the values from displayVariables() event listeners as the text content
+screenContent.textContent = displayVariables();
+
+// Appends screenContent as a child node of screen
+screen.appendChild(screenContent);
