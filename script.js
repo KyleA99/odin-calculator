@@ -56,9 +56,7 @@ function divideVariables(firstNumber, secondNumber) {
  * @param {number} secondNumber - The second number operated on.
  * @returns {number} The result of the arithmetic operation.
  */
-function operate(firstNumber, secondNumber) {
-    let operator = "+";
-
+function operate(firstNumber, secondNumber, operator) {
     if (operator === "+") {
         return addVariables(firstNumber, secondNumber);
     } else if (operator === "-") {
@@ -141,3 +139,7 @@ screenContent.textContent = displayVariables();
 
 // Appends screenContent as a child node of screen
 screen.appendChild(screenContent);
+
+// Need event listeners in operate() so it dynamically updates with right operator
+// Need to concatenate numbers if arithmetic operator has/has not been selected
+// Am I allowed to nest two functions together?  In RPS game, I was told not to do that.
