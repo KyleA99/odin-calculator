@@ -30,8 +30,8 @@ function subtractVariables(firstNumber, secondNumber) {
 
 /**
  * Multiplies two numbers together and returns the result.
- * @param {*} firstNumber - The first number to be multiplied.
- * @param {*} secondNumber - The second number to be multiplied.
+ * @param {number} firstNumber - The first number to be multiplied.
+ * @param {number} secondNumber - The second number to be multiplied.
  * @returns {number} The product of the two numbers.
  */
 function multiplyVariables(firstNumber, secondNumber) {
@@ -41,8 +41,8 @@ function multiplyVariables(firstNumber, secondNumber) {
 
 /**
  * Divides the first number by the second number and returns the result.
- * @param {*} firstNumber - The number to be divided.
- * @param {*} secondNumber - The number by which the first number will be divided.
+ * @param {number} firstNumber - The number to be divided.
+ * @param {number} secondNumber - The number by which the first number will be divided.
  * @returns {number} The result of dividing the first number by the second number.
  */
 function divideVariables(firstNumber, secondNumber) {
@@ -52,8 +52,8 @@ function divideVariables(firstNumber, secondNumber) {
 
 /**
  * Performs an arithmetic operation on two numbers based on the given operator and returns the result.
- * @param {*} firstNumber - The first number operated on.
- * @param {*} secondNumber - The second number operated on.
+ * @param {number} firstNumber - The first number operated on.
+ * @param {number} secondNumber - The second number operated on.
  * @returns {number} The result of the arithmetic operation.
  */
 function operate(firstNumber, secondNumber) {
