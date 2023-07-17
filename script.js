@@ -1,6 +1,3 @@
-// Never use eval() function.
-// Dont return a new Function() that evaluates a string either (potential fo insecure data)
-
 let firstNumber = 10;
 let secondNumber = 3;
 let operator = ["+", "-", "*", "/"];
@@ -67,7 +64,7 @@ function operate(firstNumber, secondNumber, operator) {
         return divideVariables(firstNumber, secondNumber);
     }
 }
-// console.log(operate(firstNumber, secondNumber));
+console.log(operate(firstNumber, secondNumber, operator));
 
 function displayVariables() {
     const zeroButton = document.getElementById("zero-button");
@@ -123,7 +120,7 @@ function displayVariables() {
     function displayValue(value) {
         console.log(value);
         // Update the text content of screenContent
-        screenContent.textContent = value;
+        screenContent.textContent += value;
     }
 }
 
@@ -141,5 +138,4 @@ screenContent.textContent = displayVariables();
 screen.appendChild(screenContent);
 
 // Need event listeners in operate() so it dynamically updates with right operator
-// Need to concatenate numbers if arithmetic operator has/has not been selected
 // Am I allowed to nest two functions together?  In RPS game, I was told not to do that.
