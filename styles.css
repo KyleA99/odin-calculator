@@ -53,6 +53,8 @@ main {
     margin-bottom: 1rem;
     border: solid 2px black;
     background-color: lightgray;
+    font-size: 2rem;
+    text-align: right;
 }
 
 .buttons-container {
