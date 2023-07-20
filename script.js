@@ -73,7 +73,7 @@ const screenContent = document.createElement("div");
 // Adds the class "screenContent" to the newly created div
 screenContent.classList.add("screenContent");
 // Stores the values from displayVariables() event listeners as the text content
-screenContent.textContent = displayVariables();
+screenContent.textContent = assignValues();
 
 // Appends screenContent as a child node of screen
 screen.appendChild(screenContent);
@@ -89,7 +89,7 @@ function displayValue(value) {
 /**
  * Sets up event listeners for numeric buttons to update the screen content when clicked.
  */
-function displayVariables() {
+function assignValues() {
     const zeroButton = document.getElementById("zero-button");
     zeroButton.addEventListener("click", function() {
       displayValue("0");
