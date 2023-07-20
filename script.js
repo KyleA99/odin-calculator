@@ -139,4 +139,29 @@ function assignValues() {
     nineButton.addEventListener("click", function() {
         displayValue("9");
     });
+
+    const addButton = document.getElementById("add-button");
+    addButton.addEventListener("click", function() {
+        displayValue("+");
+    });
+
+    const subtractButton = document.getElementById("subtract-button");
+    subtractButton.addEventListener("click", function() {
+        displayValue("-");
+    });
+
+    const multiplyButton = document.getElementById("multiply-button");
+    multiplyButton.addEventListener("click", function() {
+        displayValue("x");
+    });
+
+    const divideButton = document.getElementById("divide-button");
+    divideButton.addEventListener("click", function() {
+        displayValue("÷");
+    });
+
+    const calculateButton = document.getElementById("calculate-button");
+    calculateButton.addEventListener("click", function() {
+        displayValue("=");
+    });
 }
