@@ -65,10 +65,30 @@ function operate(firstNumber, secondNumber, operator) {
 }
 console.log(operate(firstNumber, secondNumber, operator));
 
+// Returns first element with id "screen"
+const screen = document.querySelector("#screen");
+
+// Creates a new div, and store it in the variable "screenContent"
+const screenContent = document.createElement("div");
+// Adds the class "screenContent" to the newly created div
+screenContent.classList.add("screenContent");
+// Stores the values from displayVariables() event listeners as the text content
+screenContent.textContent = displayVariables();
+
+// Appends screenContent as a child node of screen
+screen.appendChild(screenContent);
+
+/**
+ * Updates the content displayed on the screen.
+ * @param {string} value - The digit or character to be displayed on the screen.
+ */
 function displayValue(value) {
     screenContent.textContent += value;
 }
 
+/**
+ * Sets up event listeners for numeric buttons to update the screen content when clicked.
+ */
 function displayVariables() {
     const zeroButton = document.getElementById("zero-button");
     zeroButton.addEventListener("click", function() {
@@ -120,18 +140,3 @@ function displayVariables() {
         displayValue("9");
     });
 }
-
-// Returns first element with id "screen"
-const screen = document.querySelector("#screen");
-
-// Creates a new div, and store it in the variable "screenContent"
-const screenContent = document.createElement("div");
-// Adds the class "screenContent" to the newly created div
-screenContent.classList.add("screenContent");
-// Stores the values from displayVariables() event listeners as the text content
-screenContent.textContent = displayVariables();
-
-// Appends screenContent as a child node of screen
-screen.appendChild(screenContent);
-
-// Need event listeners in operate() so it dynamically updates with right operator
