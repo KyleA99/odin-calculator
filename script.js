@@ -1,7 +1,6 @@
 let firstNumber = 10;
 let secondNumber = 3;
 let operator = ["+", "-", "*", "/"];
-let displayValue = "";
 
 /**
  * Adds two numbers together and returns the result.
@@ -66,6 +65,10 @@ function operate(firstNumber, secondNumber, operator) {
 }
 console.log(operate(firstNumber, secondNumber, operator));
 
+function displayValue(value) {
+    screenContent.textContent += value;
+}
+
 function displayVariables() {
     const zeroButton = document.getElementById("zero-button");
     zeroButton.addEventListener("click", function() {
@@ -116,12 +119,6 @@ function displayVariables() {
     nineButton.addEventListener("click", function() {
         displayValue("9");
     });
-
-    function displayValue(value) {
-        console.log(value);
-        // Update the text content of screenContent
-        screenContent.textContent += value;
-    }
 }
 
 // Returns first element with id "screen"
@@ -138,4 +135,3 @@ screenContent.textContent = displayVariables();
 screen.appendChild(screenContent);
 
 // Need event listeners in operate() so it dynamically updates with right operator
-// Am I allowed to nest two functions together?  In RPS game, I was told not to do that.
