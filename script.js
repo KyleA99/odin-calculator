@@ -164,4 +164,9 @@ function assignValues() {
     calculateButton.addEventListener("click", function() {
         displayValue("=");
     });
+
+    const decimalButton = document.getElementById("decimal-button");
+    decimalButton.addEventListener("click", function() {
+        displayValue(".");
+    });
 }
