@@ -87,7 +87,7 @@ function displayValue(value) {
 }
 
 /**
- * Sets up event listeners for numeric buttons to update the screen content when clicked.
+ * Sets event listeners to assign values to buttons.
  */
 function assignValues() {
     const zeroButton = document.getElementById("zero-button");
