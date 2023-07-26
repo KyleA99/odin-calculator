@@ -78,12 +78,17 @@ screenContent.textContent = assignValues();
 // Appends screenContent as a child node of screen
 screen.appendChild(screenContent);
 
+// Define an empty array to store the values of the display
+const displayValuesArray = [];
+console.log(displayValuesArray)
+
 /**
  * Updates the content displayed on the screen.
  * @param {string} value - The digit or character to be displayed on the screen.
  */
 function displayValue(value) {
     screenContent.textContent += value;
+    displayValuesArray.push(value);
 }
 
 /**
