@@ -88,7 +88,7 @@ console.log(displayValuesArray)
  */
 function displayValue(value) {
     screenContent.textContent += value;
-    displayValuesArray.push(value);
+    displayValuesArray.push(screenContent.textContent);
 }
 
 /**
