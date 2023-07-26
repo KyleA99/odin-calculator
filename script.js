@@ -87,12 +87,7 @@ console.log(displayValuesArray)
  * @param {string} value - The digit or character to be displayed on the screen.
  */
 function displayValue(value) {
-        screenContent.textContent += value;
-
-    // Remove the previous value from the array if it exists
-    if (displayValuesArray.length > 0) {
-        displayValuesArray.pop();
-    }
+    screenContent.textContent += value;
 
     // Push the current value into the array
     displayValuesArray.push(screenContent.textContent);
