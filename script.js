@@ -2,6 +2,16 @@ let firstNumber = 10;
 let secondNumber = 3;
 let operator = ["+", "-", "*", "/"];
 
+const screen = document.querySelector("#screen");
+const screenContent = document.createElement("div");
+screenContent.classList.add("screenContent");
+screenContent.textContent = assignValues();
+screen.appendChild(screenContent);
+
+// Define an empty array to store the values of the display
+const displayValuesArray = [];
+console.log(displayValuesArray)
+
 /**
  * Adds two numbers together and returns the result.
  * @param {number} firstNumber - The first number to be added.
@@ -11,7 +21,6 @@ let operator = ["+", "-", "*", "/"];
 function addVariables(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
 }
-// console.log(addVariables(firstNumber, secondNumber));
 
 /**
  * Subtracts the second number from the first number and returns the result.
@@ -22,7 +31,6 @@ function addVariables(firstNumber, secondNumber) {
 function subtractVariables(firstNumber, secondNumber) {
     return firstNumber - secondNumber;
 }
-// console.log(subtractVariables(firstNumber, secondNumber));
 
 /**
  * Multiplies two numbers together and returns the result.
@@ -33,7 +41,6 @@ function subtractVariables(firstNumber, secondNumber) {
 function multiplyVariables(firstNumber, secondNumber) {
     return firstNumber * secondNumber;
 }
-// console.log(multiplyVariables(firstNumber, secondNumber));
 
 /**
  * Divides the first number by the second number and returns the result.
@@ -44,7 +51,6 @@ function multiplyVariables(firstNumber, secondNumber) {
 function divideVariables(firstNumber, secondNumber) {
     return firstNumber / secondNumber;
 }
-// console.log(divideVariables(firstNumber, secondNumber));
 
 /**
  * Performs an arithmetic operation on two numbers based on the given operator and returns the result.
@@ -64,23 +70,6 @@ function operate(firstNumber, secondNumber, operator) {
     }
 }
 console.log(operate(firstNumber, secondNumber, operator));
-
-// Returns first element with id "screen"
-const screen = document.querySelector("#screen");
-
-// Creates a new div, and store it in the variable "screenContent"
-const screenContent = document.createElement("div");
-// Adds the class "screenContent" to the newly created div
-screenContent.classList.add("screenContent");
-// Stores the values from displayVariables() event listeners as the text content
-screenContent.textContent = assignValues();
-
-// Appends screenContent as a child node of screen
-screen.appendChild(screenContent);
-
-// Define an empty array to store the values of the display
-const displayValuesArray = [];
-console.log(displayValuesArray)
 
 /**
  * Updates the content displayed on the screen and pushes the value to displayValuesArray.
@@ -177,4 +166,3 @@ function assignValues() {
         displayValue(".");
     });
 }
-// console.log(assignValues());
