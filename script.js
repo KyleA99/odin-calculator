@@ -56,6 +56,7 @@ function divideVariables(firstNumber, secondNumber) {
  * Performs an arithmetic operation on two numbers based on the given operator and returns the result.
  * @param {number} firstNumber - The first number operated on.
  * @param {number} secondNumber - The second number operated on.
+ * @param {string} operator - The arithmetic operator ('+', '-', '*', '/')
  * @returns {number} The result of the arithmetic operation.
  */
 function operate(firstNumber, secondNumber, operator) {
@@ -65,7 +66,7 @@ function operate(firstNumber, secondNumber, operator) {
         return subtractVariables(firstNumber, secondNumber);
     } else if (operator === "*") {
         return multiplyVariables(firstNumber, secondNumber);
-    } else {
+    } else if (operator === "/") {
         return divideVariables(firstNumber, secondNumber);
     }
 }
