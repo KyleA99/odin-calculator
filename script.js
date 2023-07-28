@@ -11,7 +11,7 @@ screen.appendChild(screenContent);
 
 // Define an empty array to store the values of the display
 const displayValuesArray = [];
-console.log(displayValuesArray)
+console.log(displayValuesArray);
 
 /**
  * Adds two numbers together and returns the result.
@@ -74,39 +74,38 @@ function operate(firstNumber, secondNumber, operator) {
         return divideVariables(firstNumber, secondNumber);
     }
 }
-console.log(operate(firstNumber, secondNumber, operator));
 
 /**
  * Updates the content displayed on the screen and pushes the value to displayValuesArray.
  * @param {string} value - The digit or character to be displayed on the screen.
  */
 function displayValue(value) {
-    // Check if the value is an operator
-    if (value === "+" || value === "-" || value === "x" || value === "÷") {
-        // Update the currentOperator variable
-        currentOperator = value;
-    } else if (value === "=") {
-        // Perform the calculation when the equals button is pressed
-        const displayContent = screenContent.textContent;
-        const values = displayContent.split(currentOperator);
-        if (values.length !== 2) {
-            // The display should have two values separated by an operator
-            return;
-        }
-        const firstNumber = parseFloat(values[0]);
-        const secondNumber = parseFloat(values[1]);
-        const result = operate(firstNumber, secondNumber, currentOperator);
-        screenContent.textContent = result;
-    }
+    // Update the screen content and push the new value into the array
+    screenContent.textContent += value;
+    displayValuesArray.push(screenContent.textContent);
 
     // Remove the previous value from the array
     if (displayValuesArray.length > 0) {
         displayValuesArray.pop();
     }
 
-    // Update the screen content and push the new value into the array
-    screenContent.textContent += value;
-    displayValuesArray.push(screenContent.textContent);
+    if (value === "+" || value === "-" || value === "x" || value === "÷") {
+        currentOperator = value;
+    } else if (value === "=") {
+        const displayContent = screenContent.textContent;
+        // Splits displayContent into an array with two substrings of value, separated by the currentOperator
+        const values = displayContent.split(currentOperator);
+        // Ensures values has two numbers separated by the currentOperator
+        if (values.length !== 2) {
+            return;
+        }
+        // Converts the two array substrings to a floating point number
+        const firstNumber = parseFloat(values[0]);
+        const secondNumber = parseFloat(values[1]);
+        // Calls operate() to execute arithmetic operations and displays the result on screen
+        const result = operate(firstNumber, secondNumber, currentOperator);
+        screenContent.textContent = result;
+    }
 }
 
 /**
