@@ -14,6 +14,91 @@ const displayValuesArray = [];
 console.log(displayValuesArray);
 
 /**
+ * Sets event listeners to assign values to buttons.
+ */
+function assignValues() {
+    const zeroButton = document.getElementById("zero-button");
+    zeroButton.addEventListener("click", function() {
+      displayValue(0);
+    });
+
+    const oneButton = document.getElementById("one-button");
+    oneButton.addEventListener("click", function() {
+        displayValue(1);
+    });
+
+    const twoButton = document.getElementById("two-button");
+    twoButton.addEventListener("click", function() {
+        displayValue(2);
+    });
+
+    const threeButton = document.getElementById("three-button");
+    threeButton.addEventListener("click", function() {
+        displayValue(3);
+    });
+
+    const fourButton = document.getElementById("four-button");
+    fourButton.addEventListener("click", function() {
+        displayValue(4);
+    });
+
+    const fiveButton = document.getElementById("five-button");
+    fiveButton.addEventListener("click", function() {
+        displayValue(5);
+    });
+
+    const sixButton = document.getElementById("six-button");
+    sixButton.addEventListener("click", function() {
+        displayValue(6);
+    });
+
+    const sevenButton = document.getElementById("seven-button");
+    sevenButton.addEventListener("click", function() {
+        displayValue(7);
+    });
+
+    const eightButton = document.getElementById("eight-button");
+    eightButton.addEventListener("click", function() {
+        displayValue(8);
+    });
+
+    const nineButton = document.getElementById("nine-button");
+    nineButton.addEventListener("click", function() {
+        displayValue(9);
+    });
+
+    const addButton = document.getElementById("add-button");
+    addButton.addEventListener("click", function() {
+        displayValue("+");
+    });
+
+    const subtractButton = document.getElementById("subtract-button");
+    subtractButton.addEventListener("click", function() {
+        displayValue("-");
+    });
+
+    const multiplyButton = document.getElementById("multiply-button");
+    multiplyButton.addEventListener("click", function() {
+        displayValue("x");
+    });
+
+    const divideButton = document.getElementById("divide-button");
+    divideButton.addEventListener("click", function() {
+        displayValue("÷");
+    });
+
+    const calculateButton = document.getElementById("calculate-button");
+    calculateButton.addEventListener("click", function() {
+        displayValue("=");
+    });
+
+    const decimalButton = document.getElementById("decimal-button");
+    decimalButton.addEventListener("click", function() {
+        displayValue(".");
+    });
+}
+
+/**
  * Adds two numbers together and returns the result.
  * @param {number} firstNumber - The first number to be added.
  * @param {number} secondNumber - The second number to be added.
@@ -106,89 +191,4 @@ function displayValue(value) {
         const result = operate(firstNumber, secondNumber, currentOperator);
         screenContent.textContent = result;
     }
-}
-
-/**
- * Sets event listeners to assign values to buttons.
- */
-function assignValues() {
-    const zeroButton = document.getElementById("zero-button");
-    zeroButton.addEventListener("click", function() {
-      displayValue(0);
-    });
-
-    const oneButton = document.getElementById("one-button");
-    oneButton.addEventListener("click", function() {
-        displayValue(1);
-    });
-
-    const twoButton = document.getElementById("two-button");
-    twoButton.addEventListener("click", function() {
-        displayValue(2);
-    });
-
-    const threeButton = document.getElementById("three-button");
-    threeButton.addEventListener("click", function() {
-        displayValue(3);
-    });
-
-    const fourButton = document.getElementById("four-button");
-    fourButton.addEventListener("click", function() {
-        displayValue(4);
-    });
-
-    const fiveButton = document.getElementById("five-button");
-    fiveButton.addEventListener("click", function() {
-        displayValue(5);
-    });
-
-    const sixButton = document.getElementById("six-button");
-    sixButton.addEventListener("click", function() {
-        displayValue(6);
-    });
-
-    const sevenButton = document.getElementById("seven-button");
-    sevenButton.addEventListener("click", function() {
-        displayValue(7);
-    });
-
-    const eightButton = document.getElementById("eight-button");
-    eightButton.addEventListener("click", function() {
-        displayValue(8);
-    });
-
-    const nineButton = document.getElementById("nine-button");
-    nineButton.addEventListener("click", function() {
-        displayValue(9);
-    });
-
-    const addButton = document.getElementById("add-button");
-    addButton.addEventListener("click", function() {
-        displayValue("+");
-    });
-
-    const subtractButton = document.getElementById("subtract-button");
-    subtractButton.addEventListener("click", function() {
-        displayValue("-");
-    });
-
-    const multiplyButton = document.getElementById("multiply-button");
-    multiplyButton.addEventListener("click", function() {
-        displayValue("x");
-    });
-
-    const divideButton = document.getElementById("divide-button");
-    divideButton.addEventListener("click", function() {
-        displayValue("÷");
-    });
-
-    const calculateButton = document.getElementById("calculate-button");
-    calculateButton.addEventListener("click", function() {
-        displayValue("=");
-    });
-
-    const decimalButton = document.getElementById("decimal-button");
-    decimalButton.addEventListener("click", function() {
-        displayValue(".");
-    });
 }
