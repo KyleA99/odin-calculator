@@ -1,7 +1,7 @@
-let firstNumber = 10;
-let secondNumber = 3;
-let operator = ["+", "-", "x", "÷"];
-let currentOperator = null;
+let firstNumber = 0;
+let secondNumber = 0;
+let operator = "";
+let currentOperator = "";
 
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
