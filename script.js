@@ -1,6 +1,7 @@
 let firstNumber = 10;
 let secondNumber = 3;
 let operator = ["+", "-", "x", "÷"];
+let currentOperator = null;
 
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
@@ -67,6 +68,9 @@ function operate(firstNumber, secondNumber, operator) {
     } else if (operator === "x") {
         return multiplyVariables(firstNumber, secondNumber);
     } else if (operator === "÷") {
+        if (secondNumber === 0) {
+            return "Error: Division by zero";
+        }
         return divideVariables(firstNumber, secondNumber);
     }
 }
@@ -77,6 +81,24 @@ console.log(operate(firstNumber, secondNumber, operator));
  * @param {string} value - The digit or character to be displayed on the screen.
  */
 function displayValue(value) {
+    // Check if the value is an operator
+    if (value === "+" || value === "-" || value === "x" || value === "÷") {
+        // Update the currentOperator variable
+        currentOperator = value;
+    } else if (value === "=") {
+        // Perform the calculation when the equals button is pressed
+        const displayContent = screenContent.textContent;
+        const values = displayContent.split(currentOperator);
+        if (values.length !== 2) {
+            // The display should have two values separated by an operator
+            return;
+        }
+        const firstNumber = parseFloat(values[0]);
+        const secondNumber = parseFloat(values[1]);
+        const result = operate(firstNumber, secondNumber, currentOperator);
+        screenContent.textContent = result;
+    }
+
     // Remove the previous value from the array
     if (displayValuesArray.length > 0) {
         displayValuesArray.pop();
