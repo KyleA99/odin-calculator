@@ -77,9 +77,13 @@ console.log(operate(firstNumber, secondNumber, operator));
  * @param {string} value - The digit or character to be displayed on the screen.
  */
 function displayValue(value) {
-    screenContent.textContent += value;
+    // Remove the previous value from the array
+    if (displayValuesArray.length > 0) {
+        displayValuesArray.pop();
+    }
 
-    // Push the current value into the array
+    // Update the screen content and push the new value into the array
+    screenContent.textContent += value;
     displayValuesArray.push(screenContent.textContent);
 }
 
