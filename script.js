@@ -1,6 +1,6 @@
 let firstNumber = 10;
 let secondNumber = 3;
-let operator = ["+", "-", "*", "/"];
+let operator = ["+", "-", "x", "÷"];
 
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
@@ -64,9 +64,9 @@ function operate(firstNumber, secondNumber, operator) {
         return addVariables(firstNumber, secondNumber);
     } else if (operator === "-") {
         return subtractVariables(firstNumber, secondNumber);
-    } else if (operator === "*") {
+    } else if (operator === "x") {
         return multiplyVariables(firstNumber, secondNumber);
-    } else if (operator === "/") {
+    } else if (operator === "÷") {
         return divideVariables(firstNumber, secondNumber);
     }
 }
