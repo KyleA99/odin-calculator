@@ -192,7 +192,9 @@ function displayValue(value) {
         const secondNumber = parseFloat(values[1]);
         // Calls operate() to execute arithmetic operations and displays the result on screen
         const result = operate(firstNumber, secondNumber, currentOperator);
-        screenContent.textContent = result;
+        // Rounds result to three decimal places
+        const resultRounded = Math.round(result * 1000) / 1000
+        screenContent.textContent = resultRounded;
     }
 }
 
