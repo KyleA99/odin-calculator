@@ -17,7 +17,6 @@ backspaceButton.addEventListener("click", deleteCharacter);
 
 // Define an empty array to store the values of the display
 const displayValuesArray = [];
-console.log(displayValuesArray);
 
 /**
  * Sets event listeners to assign values to buttons.
@@ -200,7 +199,7 @@ function displayValue(value) {
 }
 
 /**
- * Clears screen and resets variables and arrays when clear button is clicked
+ * Clears screen and resets variables and arrays
  */
 function clearScreen() {
     screenContent.textContent = "";
@@ -211,6 +210,9 @@ function clearScreen() {
     currentOperator = "";
 }
 
+/**
+ * Slices off most right-most character
+ */
 function deleteCharacter() {
     let content = screenContent.textContent;
 
