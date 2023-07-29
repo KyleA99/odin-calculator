@@ -192,3 +192,15 @@ function displayValue(value) {
         screenContent.textContent = result;
     }
 }
+
+const clearButton = document.getElementById("clear-button");
+clearButton.addEventListener("click", clearScreen);
+
+function clearScreen() {
+    screenContent.textContent = "";
+    displayValuesArray.length = 0;
+    firstNumber = 0;
+    secondNumber = 0;
+    operator = "";
+    currentOperator = "";
+}
