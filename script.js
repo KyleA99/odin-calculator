@@ -9,6 +9,9 @@ screenContent.classList.add("screenContent");
 screenContent.textContent = assignValues();
 screen.appendChild(screenContent);
 
+const clearButton = document.getElementById("clear-button");
+clearButton.addEventListener("click", clearScreen);
+
 // Define an empty array to store the values of the display
 const displayValuesArray = [];
 console.log(displayValuesArray);
@@ -193,9 +196,9 @@ function displayValue(value) {
     }
 }
 
-const clearButton = document.getElementById("clear-button");
-clearButton.addEventListener("click", clearScreen);
-
+/**
+ * Clears screen and resets variables and arrays when clear button is clicked
+ */
 function clearScreen() {
     screenContent.textContent = "";
     displayValuesArray.length = 0;
