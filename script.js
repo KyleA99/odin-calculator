@@ -15,7 +15,6 @@ clearButton.addEventListener("click", clearScreen);
 const backspaceButton = document.getElementById("backspace-button");
 backspaceButton.addEventListener("click", deleteCharacter);
 
-// Define an empty array to store the values of the display
 const displayValuesArray = [];
 
 /**
@@ -170,7 +169,6 @@ function operate(firstNumber, secondNumber, operator) {
  * @param {string} value - The digit or character to be displayed on the screen.
  */
 function displayValue(value) {
-    // Update the screen content and push the new value into the array
     screenContent.textContent += value;
     displayValuesArray.push(screenContent.textContent);
 
