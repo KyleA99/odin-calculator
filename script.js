@@ -12,6 +12,9 @@ screen.appendChild(screenContent);
 const clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", clearScreen);
 
+const backspaceButton = document.getElementById("backspace-button");
+backspaceButton.addEventListener("click", deleteCharacter);
+
 // Define an empty array to store the values of the display
 const displayValuesArray = [];
 console.log(displayValuesArray);
@@ -183,7 +186,7 @@ function displayValue(value) {
         const displayContent = screenContent.textContent;
         // Splits displayContent into an array with two substrings of value, separated by the currentOperator
         const values = displayContent.split(currentOperator);
-        // Ensures values has two numbers separated by the currentOperator
+        // Ensures values has a length !==2 (e.g. two numbers separated by the currentOperator)
         if (values.length !== 2) {
             return;
         }
@@ -206,4 +209,16 @@ function clearScreen() {
     secondNumber = 0;
     operator = "";
     currentOperator = "";
+}
+
+function deleteCharacter() {
+    let content = screenContent.textContent;
+
+    if (content.length > 0) {
+        // Remove the last character from the content by slicing content to be from beginning (0) to the second-to-last characer (-1)
+        content = content.slice(0, -1);
+
+        screenContent.textContent = content;
+        displayValuesArray.push(screenContent.textContent);
+    }
 }
