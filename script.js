@@ -186,11 +186,9 @@ function displayValue(value) {
         // Converts the two array substrings to a floating point number
         const firstNumber = parseFloat(values[0]);
         const secondNumber = parseFloat(values[1]);
-        // Calls operate() to execute arithmetic operations and displays the result on screen
-        const result = operate(firstNumber, secondNumber, currentOperator);
-        // Rounds result to three decimal places
-        const resultRounded = Math.round(result * 1000) / 1000
-        screenContent.textContent = resultRounded;
+        // Calls operate() to execute arithmetic operations and rounds the result to three decimal places
+        const result = (Math.round(operate(firstNumber, secondNumber, currentOperator) * 1000) / 1000);
+        screenContent.textContent = result;
     }
 }
 
