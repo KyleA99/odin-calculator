@@ -2,6 +2,7 @@ let firstNumber = 0;
 let secondNumber = 0;
 let operator = "";
 let currentOperator = "";
+let previousOperator = "";
 
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
@@ -172,11 +173,6 @@ function displayValue(value) {
     screenContent.textContent += value;
     displayValuesArray.push(screenContent.textContent);
 
-    // Remove the previous value from the array
-    if (displayValuesArray.length > 0) {
-        displayValuesArray.pop();
-    }
-
     if (value === "+" || value === "-" || value === "x" || value === "÷") {
         currentOperator = value;
     } else if (value === "=") {
@@ -211,7 +207,7 @@ function clearScreen() {
 }
 
 /**
- * Slices off most right-most character
+ * Slices off right-most character
  */
 function deleteCharacter() {
     let content = screenContent.textContent;
