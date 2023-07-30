@@ -2,7 +2,6 @@ let firstNumber = 0;
 let secondNumber = 0;
 let operator = "";
 let currentOperator = "";
-let previousOperator = "";
 
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
@@ -175,20 +174,30 @@ function displayValue(value) {
 
     if (value === "+" || value === "-" || value === "x" || value === "÷") {
         currentOperator = value;
+        document.getElementById("add-button").disabled = true;
+        document.getElementById("subtract-button").disabled = true;
+        document.getElementById("multiply-button").disabled = true;
+        document.getElementById("divide-button").disabled = true;
     } else if (value === "=") {
         const displayContent = screenContent.textContent;
-        // Splits displayContent into an array with two substrings of value, separated by the currentOperator
+        // Splits displayContent into an array comprised of substrings of value, split by the currentOperator
         const values = displayContent.split(currentOperator);
         // Ensures values has a length !==2 (e.g. two numbers separated by the currentOperator)
         if (values.length !== 2) {
             return;
         }
+
         // Converts the two array substrings to a floating point number
         const firstNumber = parseFloat(values[0]);
         const secondNumber = parseFloat(values[1]);
         // Calls operate() to execute arithmetic operations and rounds the result to three decimal places
         const result = (Math.round(operate(firstNumber, secondNumber, currentOperator) * 1000) / 1000);
         screenContent.textContent = result;
+
+        document.getElementById("add-button").disabled = false;
+        document.getElementById("subtract-button").disabled = false;
+        document.getElementById("multiply-button").disabled = false;
+        document.getElementById("divide-button").disabled = false;
     }
 }
 
