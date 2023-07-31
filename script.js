@@ -2,6 +2,7 @@ let firstNumber = 0;
 let secondNumber = 0;
 let operator = "";
 let currentOperator = "";
+let value = "";
 
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
@@ -16,6 +17,7 @@ const backspaceButton = document.getElementById("backspace-button");
 backspaceButton.addEventListener("click", deleteCharacter);
 
 const displayValuesArray = [];
+console.log(displayValuesArray);
 
 /**
  * Sets event listeners to assign values to buttons.
@@ -99,6 +101,7 @@ function assignValues() {
     const decimalButton = document.getElementById("decimal-button");
     decimalButton.addEventListener("click", function() {
         displayValue(".");
+        disableDecimalButton(".");
     });
 }
 
@@ -178,6 +181,7 @@ function displayValue(value) {
         document.getElementById("subtract-button").disabled = true;
         document.getElementById("multiply-button").disabled = true;
         document.getElementById("divide-button").disabled = true;
+        disableDecimalButton(value);
     } else if (value === "=") {
         const displayContent = screenContent.textContent;
         // Splits displayContent into an array comprised of substrings of value, split by the currentOperator
@@ -198,6 +202,7 @@ function displayValue(value) {
         document.getElementById("subtract-button").disabled = false;
         document.getElementById("multiply-button").disabled = false;
         document.getElementById("divide-button").disabled = false;
+        document.getElementById("decimal-button").disabled = false;
     }
 }
 
@@ -211,6 +216,8 @@ function clearScreen() {
     secondNumber = 0;
     operator = "";
     currentOperator = "";
+    isFirstNumberDecimal = false;
+    isSecondNumberDecimal = false;
 }
 
 /**
@@ -225,5 +232,13 @@ function deleteCharacter() {
 
         screenContent.textContent = content;
         displayValuesArray.push(screenContent.textContent);
+    }
+}
+
+function disableDecimalButton(value) {
+    if (value === ".") {
+        document.getElementById("decimal-button").disabled = true;
+    } else if (value === "+" || value === "-" || value === "x" || value === "÷" || value === "=") {
+        document.getElementById("decimal-button").disabled = false;
     }
 }
