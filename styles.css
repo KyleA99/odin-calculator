@@ -90,3 +90,22 @@ main {
     background-color: grey;
     color: azure;
 }
+
+footer, .footer-container {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-family: Roboto, sans-serif;
+}
+
+.github-logo {
+    height: 1.5rem;
+    width: 1.5rem;
+}
