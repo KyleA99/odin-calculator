@@ -14,11 +14,11 @@ Users should be able to:
 
 ### Screenshot
 
-![]()
+![](./assets/images/calculator-image.png)
 
 ### Links
 
-- Live Site URL: [Etch A Sketch - live link]()
+- Live Site URL: [Calculator - live link]()
 
 ### Built with
 
