@@ -1,3 +1,10 @@
+:root {
+    --clr-primary: lightskyblue;
+    --clr-secondary: grey;
+    --clr-tertiary: salmon;
+    --clr-neutral: azure;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -43,7 +50,7 @@ main {
     margin: auto;
     border: solid 2px black;
     border-radius: 2rem;
-    background-color: lightskyblue;
+    background-color: var(--clr-primary);
 }
 
 #screen {
@@ -52,7 +59,7 @@ main {
     border-radius: 1rem;
     margin-bottom: 1rem;
     border: solid 2px black;
-    background-color: lightgray;
+    background-color: var(--clr-neutral);
     font-size: 2rem;
     text-align: right;
 }
@@ -72,8 +79,8 @@ main {
 .top-buttons button {
     flex-basis: calc(50% - 1rem);
     border-radius: 1rem;
-    color: azure;
-    background-color: salmon;
+    color: var(--clr-neutral);
+    background-color: var(--clr-tertiary);
 }
 
 .bottom-buttons {
@@ -87,8 +94,8 @@ main {
     width: 4rem;
     height: 4rem;
     border-radius: 1rem;
-    background-color: grey;
-    color: azure;
+    background-color: var(--clr-secondary);
+    color: var(--clr-neutral);
 }
 
 footer, .footer-container {
