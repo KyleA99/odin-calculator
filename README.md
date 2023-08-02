@@ -18,7 +18,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Calculator - live link]()
+- Live Site URL: [Calculator - live link](https://kylea99.github.io/odin-calculator/)
 
 ### Built with
 
