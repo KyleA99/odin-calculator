@@ -3,6 +3,8 @@
     --clr-secondary: grey;
     --clr-tertiary: salmon;
     --clr-neutral: azure;
+    --clr-hover-primary: rgb(165, 165, 165);
+    --clr-hover-secondary: rgb(251, 150, 139);
 }
 
 *, *::before, *::after {
@@ -83,6 +85,11 @@ main {
     background-color: var(--clr-tertiary);
 }
 
+.top-buttons button:hover {
+    cursor: pointer;
+    background-color: var(--clr-hover-secondary);
+}
+
 .bottom-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -96,6 +103,11 @@ main {
     border-radius: 1rem;
     background-color: var(--clr-secondary);
     color: var(--clr-neutral);
+}
+
+.bottom-buttons button:hover {
+    cursor: pointer;
+    background-color: var(--clr-hover-primary);
 }
 
 footer, .footer-container {
