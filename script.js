@@ -235,6 +235,10 @@ function deleteCharacter() {
     }
 }
 
+/**
+ * Disables or enables the decimal button based on the given value.
+ * @param {string} value - The value to determine if the decimal button should be disabled.
+ */
 function disableDecimalButton(value) {
     if (value === ".") {
         document.getElementById("decimal-button").disabled = true;
