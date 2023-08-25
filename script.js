@@ -23,85 +23,35 @@ console.log(displayValuesArray);
  * Sets event listeners to assign values to buttons.
  */
 function initializeEventListeners() {
-    const zeroButton = document.getElementById("zero-button");
-    zeroButton.addEventListener("click", function() {
-      displayValue(0);
-    });
+    const buttons = [
+        { id: "zero-button", value: 0 },
+        { id: "one-button", value: 1 },
+        { id: "two-button", value: 2 },
+        { id: "three-button", value: 3 },
+        { id: "four-button", value: 4 },
+        { id: "five-button", value: 5 },
+        { id: "six-button", value: 6 },
+        { id: "seven-button", value: 7 },
+        { id: "eight-button", value: 8 },
+        { id: "nine-button", value: 9 },
+        { id: "add-button", value: "+" },
+        { id: "subtract-button", value: "-" },
+        { id: "multiply-button", value: "x" },
+        { id: "divide-button", value: "÷" },
+        { id: "calculate-button", value: "=" },
+        { id: "decimal-button", value: "." }
+    ];
 
-    const oneButton = document.getElementById("one-button");
-    oneButton.addEventListener("click", function() {
-        displayValue(1);
-    });
-
-    const twoButton = document.getElementById("two-button");
-    twoButton.addEventListener("click", function() {
-        displayValue(2);
-    });
-
-    const threeButton = document.getElementById("three-button");
-    threeButton.addEventListener("click", function() {
-        displayValue(3);
-    });
-
-    const fourButton = document.getElementById("four-button");
-    fourButton.addEventListener("click", function() {
-        displayValue(4);
-    });
-
-    const fiveButton = document.getElementById("five-button");
-    fiveButton.addEventListener("click", function() {
-        displayValue(5);
-    });
-
-    const sixButton = document.getElementById("six-button");
-    sixButton.addEventListener("click", function() {
-        displayValue(6);
-    });
-
-    const sevenButton = document.getElementById("seven-button");
-    sevenButton.addEventListener("click", function() {
-        displayValue(7);
-    });
-
-    const eightButton = document.getElementById("eight-button");
-    eightButton.addEventListener("click", function() {
-        displayValue(8);
-    });
-
-    const nineButton = document.getElementById("nine-button");
-    nineButton.addEventListener("click", function() {
-        displayValue(9);
-    });
-
-    const addButton = document.getElementById("add-button");
-    addButton.addEventListener("click", function() {
-        displayValue("+");
-    });
-
-    const subtractButton = document.getElementById("subtract-button");
-    subtractButton.addEventListener("click", function() {
-        displayValue("-");
-    });
-
-    const multiplyButton = document.getElementById("multiply-button");
-    multiplyButton.addEventListener("click", function() {
-        displayValue("x");
-    });
-
-    const divideButton = document.getElementById("divide-button");
-    divideButton.addEventListener("click", function() {
-        displayValue("÷");
-    });
-
-    const calculateButton = document.getElementById("calculate-button");
-    calculateButton.addEventListener("click", function() {
-        displayValue("=");
-    });
-
-    const decimalButton = document.getElementById("decimal-button");
-    decimalButton.addEventListener("click", function() {
-        displayValue(".");
-        disableDecimalButton(".");
+    buttons.forEach(button => {
+        const buttonElement = document.getElementById(button.id);
+        buttonElement.addEventListener("click", function() {
+            if (button.value === ".") {
+                displayValue(".");
+                disableDecimalButton(".");
+            } else {
+                displayValue(button.value);
+            }
+        });
     });
 }
 
