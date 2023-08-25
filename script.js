@@ -7,7 +7,7 @@ let value = "";
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
 screenContent.classList.add("screenContent");
-screenContent.textContent = assignValues();
+screenContent.textContent = initializeEventListeners();
 screen.appendChild(screenContent);
 
 const clearButton = document.getElementById("clear-button");
@@ -154,16 +154,16 @@ function divideOperands(firstNumber, secondNumber) {
  */
 function initializeOperation(firstNumber, secondNumber, operator) {
     if (operator === "+") {
-        return addVariables(firstNumber, secondNumber);
+        return addOperands(firstNumber, secondNumber);
     } else if (operator === "-") {
-        return subtractVariables(firstNumber, secondNumber);
+        return subtractOperands(firstNumber, secondNumber);
     } else if (operator === "x") {
-        return multiplyVariables(firstNumber, secondNumber);
+        return multiplyOperands(firstNumber, secondNumber);
     } else if (operator === "÷") {
         if (secondNumber === 0) {
             return "Error: Division by zero";
         }
-        return divideVariables(firstNumber, secondNumber);
+        return divideOperands(firstNumber, secondNumber);
     }
 }
 
@@ -195,7 +195,7 @@ function displayValue(value) {
         const firstNumber = parseFloat(values[0]);
         const secondNumber = parseFloat(values[1]);
         // Calls operate() to execute arithmetic operations and rounds the result to three decimal places
-        const result = (Math.round(operate(firstNumber, secondNumber, currentOperator) * 1000) / 1000);
+        const result = (Math.round(initializeOperation(firstNumber, secondNumber, currentOperator) * 1000) / 1000);
         screenContent.textContent = result;
 
         document.getElementById("add-button").disabled = false;
