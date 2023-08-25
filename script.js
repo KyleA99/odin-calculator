@@ -22,7 +22,7 @@ console.log(displayValuesArray);
 /**
  * Sets event listeners to assign values to buttons.
  */
-function assignValues() {
+function initializeEventListeners() {
     const zeroButton = document.getElementById("zero-button");
     zeroButton.addEventListener("click", function() {
       displayValue(0);
@@ -111,7 +111,7 @@ function assignValues() {
  * @param {number} secondNumber - The second number to be added.
  * @returns {number} The sum of the two numbers.
  */
-function addVariables(firstNumber, secondNumber) {
+function addOperands(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
 }
 
@@ -121,7 +121,7 @@ function addVariables(firstNumber, secondNumber) {
  * @param {number} secondNumber - The number to be subtracted.
  * @returns {number} The result of subtracting the second number from the first number.
  */
-function subtractVariables(firstNumber, secondNumber) {
+function subtractOperands(firstNumber, secondNumber) {
     return firstNumber - secondNumber;
 }
 
@@ -131,7 +131,7 @@ function subtractVariables(firstNumber, secondNumber) {
  * @param {number} secondNumber - The second number to be multiplied.
  * @returns {number} The product of the two numbers.
  */
-function multiplyVariables(firstNumber, secondNumber) {
+function multiplyOperands(firstNumber, secondNumber) {
     return firstNumber * secondNumber;
 }
 
@@ -141,7 +141,7 @@ function multiplyVariables(firstNumber, secondNumber) {
  * @param {number} secondNumber - The number by which the first number will be divided.
  * @returns {number} The result of dividing the first number by the second number.
  */
-function divideVariables(firstNumber, secondNumber) {
+function divideOperands(firstNumber, secondNumber) {
     return firstNumber / secondNumber;
 }
 
@@ -152,7 +152,7 @@ function divideVariables(firstNumber, secondNumber) {
  * @param {string} operator - The arithmetic operator ('+', '-', '*', '/')
  * @returns {number} The result of the arithmetic operation.
  */
-function operate(firstNumber, secondNumber, operator) {
+function initializeOperation(firstNumber, secondNumber, operator) {
     if (operator === "+") {
         return addVariables(firstNumber, secondNumber);
     } else if (operator === "-") {
