@@ -107,9 +107,9 @@ function initializeEventListeners() {
 
 /**
  * Adds two numbers together and returns the result.
- * @param {number} firstNumber - The first number to be added.
- * @param {number} secondNumber - The second number to be added.
- * @returns {number} The sum of the two numbers.
+ * @param {number: integer || floating-point} firstNumber - The first number to be added.
+ * @param {number: integer || floating-point} secondNumber - The second number to be added.
+ * @returns {number: integer || floating-point} The sum of the two numbers.
  */
 function addOperands(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
@@ -117,9 +117,9 @@ function addOperands(firstNumber, secondNumber) {
 
 /**
  * Subtracts the second number from the first number and returns the result.
- * @param {number} firstNumber -  The number from which the second number will be subtracted.
- * @param {number} secondNumber - The number to be subtracted.
- * @returns {number} The result of subtracting the second number from the first number.
+ * @param {number: integer || floating-point} firstNumber -  The number from which the second number will be subtracted.
+ * @param {number: integer || floating-point} secondNumber - The number to be subtracted.
+ * @returns {number: integer || floating-point} The result of subtracting the second number from the first number.
  */
 function subtractOperands(firstNumber, secondNumber) {
     return firstNumber - secondNumber;
@@ -127,9 +127,9 @@ function subtractOperands(firstNumber, secondNumber) {
 
 /**
  * Multiplies two numbers together and returns the result.
- * @param {number} firstNumber - The first number to be multiplied.
- * @param {number} secondNumber - The second number to be multiplied.
- * @returns {number} The product of the two numbers.
+ * @param {number: integer || floating-point} firstNumber - The first number to be multiplied.
+ * @param {number: integer || floating-point} secondNumber - The second number to be multiplied.
+ * @returns {number: integer || floating-point} The product of the two numbers.
  */
 function multiplyOperands(firstNumber, secondNumber) {
     return firstNumber * secondNumber;
@@ -137,9 +137,9 @@ function multiplyOperands(firstNumber, secondNumber) {
 
 /**
  * Divides the first number by the second number and returns the result.
- * @param {number} firstNumber - The number to be divided.
- * @param {number} secondNumber - The number by which the first number will be divided.
- * @returns {number} The result of dividing the first number by the second number.
+ * @param {number: integer || floating-point} firstNumber - The number to be divided.
+ * @param {number: integer || floating-point} secondNumber - The number by which the first number will be divided.
+ * @returns {number: integer || floating-point} The result of dividing the first number by the second number.
  */
 function divideOperands(firstNumber, secondNumber) {
     return firstNumber / secondNumber;
@@ -147,10 +147,10 @@ function divideOperands(firstNumber, secondNumber) {
 
 /**
  * Performs an arithmetic operation on two numbers based on the given operator and returns the result.
- * @param {number} firstNumber - The first number operated on.
- * @param {number} secondNumber - The second number operated on.
+ * @param {number: integer || floating-point} firstNumber - The first number operated on.
+ * @param {number: integer || floating-point} secondNumber - The second number operated on.
  * @param {string} operator - The arithmetic operator ('+', '-', '*', '/')
- * @returns {number} The result of the arithmetic operation.
+ * @returns {number: integer || floating-point} The result of the arithmetic operation.
  */
 function initializeOperation(firstNumber, secondNumber, operator) {
     if (operator === "+") {
