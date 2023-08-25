@@ -26,4 +26,3 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - JavaScript
-- JavaScript DOM
