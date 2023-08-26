@@ -100,17 +100,21 @@ function divideOperands(firstNumber, secondNumber) {
  * @returns {number: integer || floating-point} The result of the arithmetic operation.
  */
 function initializeOperation(firstNumber, secondNumber, currentOperator) {
-    if (currentOperator === "+") {
-        return addOperands(firstNumber, secondNumber);
-    } else if (currentOperator === "-") {
-        return subtractOperands(firstNumber, secondNumber);
-    } else if (currentOperator === "*") {
-        return multiplyOperands(firstNumber, secondNumber);
-    } else if (currentOperator === "÷") {
-        if (secondNumber === 0) {
-            return "Error: Division by zero";
+    try {
+        if (currentOperator === "+") {
+            return addOperands(firstNumber, secondNumber);
+        } else if (currentOperator === "-") {
+            return subtractOperands(firstNumber, secondNumber);
+        } else if (currentOperator === "*") {
+            return multiplyOperands(firstNumber, secondNumber);
+        } else if (currentOperator === "÷") {
+            if (secondNumber === 0) {
+                throw new Error("Division by zero");
+            }
+            return divideOperands(firstNumber, secondNumber);
         }
-        return divideOperands(firstNumber, secondNumber);
+    } catch (error) {
+        alert("Error: " + error.message);
     }
 }
 
