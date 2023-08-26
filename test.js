@@ -1,6 +1,13 @@
 let firstNumber = 0;
 let secondNumber = 0;
+let operator = "";
 let currentOperator = "";
+const additionOperator = "+";
+const subtractionOperator = "-";
+const multiplicationOperator = "*";
+const divisionOperator = "÷";
+const equalOperator = "=";
+const decimalPoint = ".";
 let value = "";
 const displayValuesArray = [];
 
@@ -31,20 +38,30 @@ function initializeEventListeners() {
         { id: "seven-button", value: 7 },
         { id: "eight-button", value: 8 },
         { id: "nine-button", value: 9 },
-        { id: "add-button", value: "+" },
-        { id: "subtract-button", value: "-" },
-        { id: "multiply-button", value: "x" },
-        { id: "divide-button", value: "÷" },
+        { id: "add-button", value: "additionOperator" },
+        { id: "subtract-button", value: "subtractionOperator" },
+        { id: "multiply-button", value: "multiplicationOperator" },
+        { id: "divide-button", value: "divisionOperator" },
         { id: "calculate-button", value: "=" },
-        { id: "decimal-button", value: "." }
+        { id: "decimal-button", value: "decimalPoint" }
     ];
 
     buttons.forEach(button => {
         const buttonElement = document.getElementById(button.id);
         buttonElement.addEventListener("click", function() {
-            if (button.value === ".") {
-                displayValue(".");
-                disableDecimalButton(".");
+            if (button.value === "additionOperator") {
+                displayValue("+");
+            } else if (button.value === "subtractionOperator") {
+                displayValue("-");
+            } else if (button.value === "multiplicationOperator") {
+                displayValue("*");
+            } else if (button.value === "divisionOperator") {
+                displayValue("÷");
+            } else if (button.value === "=") {
+                displayValue("=");
+            }   else if (button.value === "decimalPoint") {
+                    displayValue(".");
+                    disableDecimalButton(".");
             } else {
                 displayValue(button.value);
             }
@@ -96,17 +113,17 @@ function divideOperands(firstNumber, secondNumber) {
  * Performs an arithmetic operation on two numbers based on the given operator and returns the result.
  * @param {number: integer || floating-point} firstNumber - The first number operated on.
  * @param {number: integer || floating-point} secondNumber - The second number operated on.
- * @param {string} currentOperator - The arithmetic operator.
+ * @param {string} operator - The arithmetic operator
  * @returns {number: integer || floating-point} The result of the arithmetic operation.
  */
-function initializeOperation(firstNumber, secondNumber, currentOperator) {
-    if (currentOperator === "+") {
+function initializeOperation(firstNumber, secondNumber, operator) {
+    if (operator === "additionOperator") {
         return addOperands(firstNumber, secondNumber);
-    } else if (currentOperator === "-") {
+    } else if (operator === "subtractionOperator") {
         return subtractOperands(firstNumber, secondNumber);
-    } else if (currentOperator === "*") {
+    } else if (operator === "multiplicationOperator") {
         return multiplyOperands(firstNumber, secondNumber);
-    } else if (currentOperator === "÷") {
+    } else if (operator === "divisionOperator") {
         if (secondNumber === 0) {
             return "Error: Division by zero";
         }
@@ -122,7 +139,7 @@ function displayValue(value) {
     screenContent.textContent += value;
     displayValuesArray.push(screenContent.textContent);
 
-    if (value === "+" || value === "-" || value === "x" || value === "÷") {
+    if (value === "additionOperator" || value === "subtractionOperator" || value === "multiplicationOperator" || value === "divisionOperator") {
         currentOperator = value;
         document.getElementById("add-button").disabled = true;
         document.getElementById("subtract-button").disabled = true;
@@ -154,20 +171,21 @@ function displayValue(value) {
 }
 
 /**
- * Clears screen and resets variables and arrays.
+ * Clears screen and resets variables and arrays
  */
 function clearScreen() {
     screenContent.textContent = "";
     displayValuesArray.length = 0;
     firstNumber = 0;
     secondNumber = 0;
+    operator = "";
     currentOperator = "";
     isFirstNumberDecimal = false;
     isSecondNumberDecimal = false;
 }
 
 /**
- * Slices off right-most character.
+ * Slices off right-most character
  */
 function deleteCharacter() {
     let content = screenContent.textContent;
@@ -188,7 +206,7 @@ function deleteCharacter() {
 function disableDecimalButton(value) {
     if (value === ".") {
         document.getElementById("decimal-button").disabled = true;
-    } else if (value === "+" || value === "-" || value === "x" || value === "÷" || value === "=") {
+    } else if (value === "additionOperator" || value === "subtractionOperator" || value === "multiplicationOperator" || value === "divisionOperator" || value === "=") {
         document.getElementById("decimal-button").disabled = false;
     }
 }
