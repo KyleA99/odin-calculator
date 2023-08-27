@@ -33,7 +33,7 @@ function initializeEventListeners() {
         { id: "nine-button", value: 9 },
         { id: "add-button", value: "+" },
         { id: "subtract-button", value: "-" },
-        { id: "multiply-button", value: "x" },
+        { id: "multiply-button", value: "*" },
         { id: "divide-button", value: "÷" },
         { id: "calculate-button", value: "=" },
         { id: "decimal-button", value: "." }
@@ -126,7 +126,7 @@ function displayValue(value) {
     screenContent.textContent += value;
     displayValuesArray.push(screenContent.textContent);
 
-    if (value === "+" || value === "-" || value === "x" || value === "÷") {
+    if (value === "+" || value === "-" || value === "*" || value === "÷") {
         currentOperator = value;
         document.getElementById("add-button").disabled = true;
         document.getElementById("subtract-button").disabled = true;
@@ -192,7 +192,7 @@ function deleteCharacter() {
 function disableDecimalButton(value) {
     if (value === ".") {
         document.getElementById("decimal-button").disabled = true;
-    } else if (value === "+" || value === "-" || value === "x" || value === "÷" || value === "=") {
+    } else if (value === "+" || value === "-" || value === "*" || value === "÷" || value === "=") {
         document.getElementById("decimal-button").disabled = false;
     }
 }
