@@ -5,6 +5,8 @@
     --clr-neutral: azure;
     --clr-hover-primary: rgb(165, 165, 165);
     --clr-hover-secondary: rgb(251, 150, 139);
+
+    --ff-primary: Roboto, sans-serif;
 }
 
 *, *::before, *::after {
@@ -13,6 +15,10 @@
 
 * {
     margin: 0;
+}
+
+html {
+    font-family: var(--ff-primary);
 }
 
 body {
@@ -126,7 +132,6 @@ footer, .footer-container {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    font-family: Roboto, sans-serif;
 }
 
 .github-logo {
