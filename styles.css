@@ -40,7 +40,8 @@ p, h1, h2, h3, h4, h5, h6 {
 
 main {
     display: flex;
-    min-height: calc(100vh - 95px);
+    flex-direction: column;
+    min-height: calc(100vh - 250px);
 }
 
 .calculator-container {
@@ -108,6 +109,10 @@ main {
 .bottom-buttons button:hover {
     cursor: pointer;
     background-color: var(--clr-hover-primary);
+}
+
+.calculator-limitations-note {
+    text-align: center;
 }
 
 footer, .footer-container {
