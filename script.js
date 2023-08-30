@@ -53,6 +53,20 @@ function initializeEventListeners() {
 }
 
 /**
+ * Validates whether the provided values are valid numbers.
+ * @param {...(number | string)} numbers - The values to be validated.
+ * @throws {Error} Throws an error if any of the provided values is not a valid number.
+ */
+function validateNumbers(...numbers) {
+    numbers.forEach(number => {
+        if (typeof number !== "number" || isNaN(number)) {
+            alert("Invalid number");
+            throw new Error("Invalid number");
+        }
+    });
+}
+
+/**
  * Adds two numbers together and returns the result.
  * @param {number} firstNumber - The first number to be added. Can be an integer or floating-point number.
  * @param {number} secondNumber - The second number to be added. Can be an integer or floating-point number.
@@ -94,20 +108,6 @@ function multiplyOperands(firstNumber, secondNumber) {
 function divideOperands(firstNumber, secondNumber) {
     validateNumbers(firstNumber, secondNumber);
     return firstNumber / secondNumber;
-}
-
-/**
- * Validates whether the provided values are valid numbers.
- * @param {...(number | string)} numbers - The values to be validated.
- * @throws {Error} Throws an error if any of the provided values is not a valid number.
- */
-function validateNumbers(...numbers) {
-    numbers.forEach(number => {
-        if (typeof number !== "number" || isNaN(number)) {
-            alert("Invalid number");
-            throw new Error("Invalid number");
-        }
-    });
 }
 
 /**
