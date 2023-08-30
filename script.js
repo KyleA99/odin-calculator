@@ -59,6 +59,7 @@ function initializeEventListeners() {
  * @returns {number: integer || floating-point} The sum of the two numbers.
  */
 function addOperands(firstNumber, secondNumber) {
+    validateNumbers(firstNumber, secondNumber);
     return firstNumber + secondNumber;
 }
 
@@ -69,6 +70,7 @@ function addOperands(firstNumber, secondNumber) {
  * @returns {number: integer || floating-point} The result of subtracting the second number from the first number.
  */
 function subtractOperands(firstNumber, secondNumber) {
+    validateNumbers(firstNumber, secondNumber);
     return firstNumber - secondNumber;
 }
 
@@ -79,6 +81,7 @@ function subtractOperands(firstNumber, secondNumber) {
  * @returns {number: integer || floating-point} The product of the two numbers.
  */
 function multiplyOperands(firstNumber, secondNumber) {
+    validateNumbers(firstNumber, secondNumber);
     return firstNumber * secondNumber;
 }
 
@@ -89,7 +92,18 @@ function multiplyOperands(firstNumber, secondNumber) {
  * @returns {number: integer || floating-point} The result of dividing the first number by the second number.
  */
 function divideOperands(firstNumber, secondNumber) {
+    validateNumbers(firstNumber, secondNumber);
     return firstNumber / secondNumber;
+}
+
+// Add documentation
+function validateNumbers(...numbers) {
+    numbers.forEach(number => {
+        if (typeof number !== 'number' || isNaN(number)) {
+            alert("Invalid number");
+            throw new Error("Invalid number");
+        }
+    });
 }
 
 /**
@@ -145,7 +159,7 @@ function displayValue(value) {
         // Converts the two array substrings to a floating point number
         const firstNumber = parseFloat(values[0]);
         const secondNumber = parseFloat(values[1]);
-        // Calls operate() to execute arithmetic operations and rounds the result to three decimal places
+        // Calls initializeOperation() to execute arithmetic operations and rounds the result to three decimal places
         const result = (Math.round(initializeOperation(firstNumber, secondNumber, currentOperator) * 1000) / 1000);
         screenContent.textContent = result;
 
