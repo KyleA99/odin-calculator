@@ -1,5 +1,3 @@
-let firstNumber = 0;
-let secondNumber = 0;
 let currentOperator = "";
 let value = "";
 const displayValuesArray = [];
