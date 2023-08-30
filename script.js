@@ -1,5 +1,3 @@
-let currentOperator = "";
-let value = "";
 const displayValuesArray = [];
 
 const screen = document.querySelector("#screen");
@@ -7,13 +5,6 @@ const screenContent = document.createElement("div");
 screenContent.classList.add("screenContent");
 screenContent.textContent = initializeEventListeners();
 screen.appendChild(screenContent);
-
-const clearButton = document.getElementById("clear-button");
-clearButton.addEventListener("click", clearScreen);
-
-const backspaceButton = document.getElementById("backspace-button");
-backspaceButton.addEventListener("click", deleteCharacter);
-
 /**
  * Sets event listeners to assign values to buttons.
  */
@@ -173,6 +164,8 @@ function displayValue(value) {
     }
 }
 
+const clearButton = document.getElementById("clear-button");
+clearButton.addEventListener("click", clearScreen);
 /**
  * Clears screen and resets variables and arrays.
  */
@@ -186,6 +179,8 @@ function clearScreen() {
     isSecondNumberDecimal = false;
 }
 
+const backspaceButton = document.getElementById("backspace-button");
+backspaceButton.addEventListener("click", deleteCharacter);
 /**
  * Slices off the right-most character.
  */
