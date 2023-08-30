@@ -152,8 +152,8 @@ function displayValue(value) {
         // Converts the two array substrings to a floating point number
         const firstNumber = parseFloat(values[0]);
         const secondNumber = parseFloat(values[1]);
-        // Calls initializeOperation() to execute arithmetic operations and rounds the result to three decimal places
-        const result = (Math.round(initializeOperation(firstNumber, secondNumber, currentOperator) * 1000) / 1000);
+        // Calls initializeOperation() to execute arithmetic operations and rounds the result to fifth decimal places
+        const result = (Math.round(initializeOperation(firstNumber, secondNumber, currentOperator) * 100000) / 100000);
         screenContent.textContent = result;
 
         document.getElementById("add-button").disabled = false;
