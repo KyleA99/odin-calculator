@@ -54,9 +54,9 @@ function initializeEventListeners() {
 
 /**
  * Adds two numbers together and returns the result.
- * @param {number: integer || floating-point} firstNumber - The first number to be added.
- * @param {number: integer || floating-point} secondNumber - The second number to be added.
- * @returns {number: integer || floating-point} The sum of the two numbers.
+ * @param {number} firstNumber - The first number to be added. Can be an integer or floating-point number.
+ * @param {number} secondNumber - The second number to be added. Can be an integer or floating-point number.
+ * @returns {number} The sum of the two numbers.
  */
 function addOperands(firstNumber, secondNumber) {
     validateNumbers(firstNumber, secondNumber);
@@ -65,9 +65,9 @@ function addOperands(firstNumber, secondNumber) {
 
 /**
  * Subtracts the second number from the first number and returns the result.
- * @param {number: integer || floating-point} firstNumber -  The number from which the second number will be subtracted.
- * @param {number: integer || floating-point} secondNumber - The number to be subtracted.
- * @returns {number: integer || floating-point} The result of subtracting the second number from the first number.
+ * @param {number} firstNumber - The number from which the second number will be subtracted. Can be an integer or floating-point number.
+ * @param {number} secondNumber - The number to be subtracted. Can be an integer or floating-point number.
+ * @returns {number} The result of subtracting the second number from the first number.
  */
 function subtractOperands(firstNumber, secondNumber) {
     validateNumbers(firstNumber, secondNumber);
@@ -76,9 +76,9 @@ function subtractOperands(firstNumber, secondNumber) {
 
 /**
  * Multiplies two numbers together and returns the result.
- * @param {number: integer || floating-point} firstNumber - The first number to be multiplied.
- * @param {number: integer || floating-point} secondNumber - The second number to be multiplied.
- * @returns {number: integer || floating-point} The product of the two numbers.
+ * @param {number} firstNumber - The first number to be multiplied. Can be an integer or floating-point number.
+ * @param {number} secondNumber - The second number to be multiplied. Can be an integer or floating-point number.
+ * @returns {number} The product of the two numbers.
  */
 function multiplyOperands(firstNumber, secondNumber) {
     validateNumbers(firstNumber, secondNumber);
@@ -87,9 +87,9 @@ function multiplyOperands(firstNumber, secondNumber) {
 
 /**
  * Divides the first number by the second number and returns the result.
- * @param {number: integer || floating-point} firstNumber - The number to be divided.
- * @param {number: integer || floating-point} secondNumber - The number by which the first number will be divided.
- * @returns {number: integer || floating-point} The result of dividing the first number by the second number.
+ * @param {number} firstNumber - The number to be divided. Can be an integer or floating-point number.
+ * @param {number} secondNumber - The number by which the first number will be divided. Can be an integer or floating-point number.
+ * @returns {number} The result of dividing the first number by the second number.
  */
 function divideOperands(firstNumber, secondNumber) {
     validateNumbers(firstNumber, secondNumber);
@@ -112,10 +112,10 @@ function validateNumbers(...numbers) {
 
 /**
  * Performs an arithmetic operation on two numbers based on the given operator and returns the result.
- * @param {number: integer || floating-point} firstNumber - The first number operated on.
- * @param {number: integer || floating-point} secondNumber - The second number operated on.
+ * @param {number} firstNumber - The first number operated on. Can be an integer or floating-point number.
+ * @param {number} secondNumber - The second number operated on. Can be an integer or floating-point number.
  * @param {string} currentOperator - The arithmetic operator.
- * @returns {number: integer || floating-point} The result of the arithmetic operation.
+ * @returns {number} The result of the arithmetic operation.
  */
 function initializeOperation(firstNumber, secondNumber, currentOperator) {
     try {
@@ -189,7 +189,7 @@ function clearScreen() {
 }
 
 /**
- * Slices off right-most character.
+ * Slices off the right-most character.
  */
 function deleteCharacter() {
     let content = screenContent.textContent;
