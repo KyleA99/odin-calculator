@@ -96,10 +96,14 @@ function divideOperands(firstNumber, secondNumber) {
     return firstNumber / secondNumber;
 }
 
-// Add documentation
+/**
+ * Validates whether the provided values are valid numbers.
+ * @param {...(number | string)} numbers - The values to be validated.
+ * @throws {Error} Throws an error if any of the provided values is not a valid number.
+ */
 function validateNumbers(...numbers) {
     numbers.forEach(number => {
-        if (typeof number !== 'number' || isNaN(number)) {
+        if (typeof number !== "number" || isNaN(number)) {
             alert("Invalid number");
             throw new Error("Invalid number");
         }
