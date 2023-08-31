@@ -152,9 +152,10 @@ function displayValue(value) {
         // Converts the two array substrings to a floating point number
         const firstNumber = parseFloat(values[0]);
         const secondNumber = parseFloat(values[1]);
-        // Calls initializeOperation() to execute arithmetic operations and rounds the result to fifth decimal places
-        const result = (Math.round(initializeOperation(firstNumber, secondNumber, currentOperator) * 100000) / 100000);
-        screenContent.textContent = result;
+        // Calls initializeOperation() to execute arithmetic operations.
+        const result = (initializeOperation(firstNumber, secondNumber, currentOperator));
+        const roundedResult = roundResult(result);
+        screenContent.textContent = roundedResult;
 
         document.getElementById("add-button").disabled = false;
         document.getElementById("subtract-button").disabled = false;
@@ -162,6 +163,15 @@ function displayValue(value) {
         document.getElementById("divide-button").disabled = false;
         document.getElementById("decimal-button").disabled = false;
     }
+}
+
+/**
+ * Rounds a number to a specified number of decimal places.
+ * @param {number} number - The number to be rounded. Can be an integer or floating-point number.
+ * @returns {number} The rounded number.
+ */
+function roundResult(number) {
+    return Math.round(number * 100000) / 100000;
 }
 
 const clearButton = document.getElementById("clear-button");
