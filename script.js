@@ -1,8 +1,11 @@
 const displayValuesArray = [];
+let firstNumber = 0;
+let secondNumber = 0;
 let currentOperator = "";
 
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
+const displayContent = screenContent.textContent;
 screenContent.classList.add("screenContent");
 screenContent.textContent = initializeEventListeners();
 screen.appendChild(screenContent);
@@ -141,6 +144,7 @@ function displayValue(value) {
         document.getElementById("multiply-button").disabled = true;
         document.getElementById("divide-button").disabled = true;
         disableDecimalButton(value);
+        // disableCalculateButton(extractedNumbers);
     } else if (value === "=") {
         const displayContent = screenContent.textContent;
         const values = displayContent.split(currentOperator);
@@ -159,6 +163,12 @@ function displayValue(value) {
         document.getElementById("multiply-button").disabled = false;
         document.getElementById("divide-button").disabled = false;
         document.getElementById("decimal-button").disabled = false;
+        
+        // After the calculation is complete, call disableCalculateButton
+        disableCalculateButton(extractedNumbers);
+    } else {
+        // If it's a digit or decimal point, call disableCalculateButton
+        disableCalculateButton(extractNumbersBeforeAndAfterSymbol(screenContent.textContent, currentOperator));
     }
 }
 
@@ -215,35 +225,54 @@ function disableDecimalButton(value) {
     }
 }
 
-const displayContent = "12345*6789";
-const symbol = "*";
-// const symbol = ["+", "-", "*", "÷"];
-const extractedNumbers = extractNumbersBeforeAndAfterSymbol(displayContent, symbol);
+const extractedNumbers = extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator);
 
-function extractNumbersBeforeAndAfterSymbol(displayContent, symbol) {
-    const parts = displayContent.split(symbol);
+function extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator) {
+    let numbersBeforeOperator;
+    let numbersAfterOperator;
 
-    if (parts.length > 1) {
-        const numbersBeforeSymbol = parseInt(parts[0], 10);
-        const numbersAfterSymbol = parseInt(parts[1], 10);
+    const parts = displayContent.split(currentOperator);
 
-        if (!isNaN(numbersBeforeSymbol) && !isNaN(numbersAfterSymbol)) {
-        return {
-            numbersBefore: numbersBeforeSymbol,
-            numbersAfter: numbersAfterSymbol
-        };
-        }
+    if (!currentOperator) {
+        numbersBeforeOperator = displayContent;
+        // console.log(numbersBeforeOperator);
+    } else {
+        numbersBeforeOperator = parseInt(parts[0], 10);
+        // console.log(numbersBeforeOperator);
     }
 
-  return null;
+    if (currentOperator) {
+        numbersAfterOperator = parseInt(parts[1], 10);
+        // console.log(numbersAfterOperator);
+    } else {
+        numbersAfterOperator = null;
+    }
+        
+    // Validates they are numbers
+    if (!isNaN(numbersBeforeOperator) && !isNaN(numbersAfterOperator)) {
+        return {
+            numbersBefore: numbersBeforeOperator,
+            numbersAfter: numbersAfterOperator
+        };
+    }
+    return null;
 }
+// numbersBeforeOperator and numbersAfterOperator works
+// try console logging with lines 234, 238, 260, and 261 to see behavior.
 
+
+
+
+
+
+
+// this doesnt work, i dont think.
 function disableCalculateButton(extractedNumbers) {
-    // Checks if extractedNumbers is truthy.
     if (extractedNumbers) {
         document.getElementById("calculate-button").disabled = false;
         console.log("Numbers before symbol:", extractedNumbers.numbersBefore);
-    console.log("Numbers after symbol:", extractedNumbers.numbersAfter);
+        console.log("Numbers after symbol:", extractedNumbers.numbersAfter);
+        console.log()
     } else {
         document.getElementById("calculate-button").disabled = true;
         console.log("Symbol not found or invalid numbers.");
