@@ -1,4 +1,5 @@
 const displayValuesArray = [];
+let currentOperator = "";
 
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
@@ -153,7 +154,7 @@ function displayValue(value) {
         const firstNumber = parseFloat(values[0]);
         const secondNumber = parseFloat(values[1]);
         // Calls initializeOperation() to execute arithmetic operations.
-        const result = (initializeOperation(firstNumber, secondNumber, currentOperator));
+        const result = initializeOperation(firstNumber, secondNumber, currentOperator);
         const roundedResult = roundResult(result);
         screenContent.textContent = roundedResult;
 
@@ -217,3 +218,41 @@ function disableDecimalButton(value) {
         document.getElementById("decimal-button").disabled = false;
     }
 }
+
+const displayContent = "12345*6789";
+const symbol = "*";
+// const symbol = ["+", "-", "*", "÷"];
+const extractedNumbers = extractNumbersBeforeAndAfterSymbol(displayContent, symbol);
+
+function extractNumbersBeforeAndAfterSymbol(displayContent, symbol) {
+    const parts = displayContent.split(symbol);
+
+    if (parts.length > 1) {
+        const numbersBeforeSymbol = parseInt(parts[0], 10);
+        const numbersAfterSymbol = parseInt(parts[1], 10);
+
+        if (!isNaN(numbersBeforeSymbol) && !isNaN(numbersAfterSymbol)) {
+        return {
+            numbersBefore: numbersBeforeSymbol,
+            numbersAfter: numbersAfterSymbol
+        };
+        }
+    }
+
+  return null;
+}
+
+function disableCalculateButton(extractedNumbers) {
+    // Checks if extractedNumbers is truthy.
+    if (extractedNumbers) {
+        document.getElementById("calculate-button").disabled = false;
+        console.log("Numbers before symbol:", extractedNumbers.numbersBefore);
+    console.log("Numbers after symbol:", extractedNumbers.numbersAfter);
+    } else {
+        document.getElementById("calculate-button").disabled = true;
+        console.log("Symbol not found or invalid numbers.");
+    }
+}
+disableCalculateButton();
+
+// need to correlate extractNumbers with actual code so it can access screen content/display content
