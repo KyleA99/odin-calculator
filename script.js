@@ -143,17 +143,13 @@ function displayValue(value) {
         disableDecimalButton(value);
     } else if (value === "=") {
         const displayContent = screenContent.textContent;
-        // Splits displayContent into an array comprised of substrings of value, split by the currentOperator
         const values = displayContent.split(currentOperator);
-        // Ensures values has a length !==2 (e.g. two numbers separated by the currentOperator)
         if (values.length !== 2) {
             return;
         }
 
-        // Converts the two array substrings to a floating point number
         const firstNumber = parseFloat(values[0]);
         const secondNumber = parseFloat(values[1]);
-        // Calls initializeOperation() to execute arithmetic operations.
         const result = initializeOperation(firstNumber, secondNumber, currentOperator);
         const roundedResult = roundResult(result);
         screenContent.textContent = roundedResult;
@@ -254,5 +250,3 @@ function disableCalculateButton(extractedNumbers) {
     }
 }
 disableCalculateButton();
-
-// need to correlate extractNumbers with actual code so it can access screen content/display content
