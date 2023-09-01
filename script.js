@@ -249,4 +249,4 @@ function disableCalculateButton(extractedNumbers) {
         console.log("Symbol not found or invalid numbers.");
     }
 }
-disableCalculateButton();
+disableCalculateButton(extractedNumbers);
