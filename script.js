@@ -144,7 +144,6 @@ function displayValue(value) {
         document.getElementById("multiply-button").disabled = true;
         document.getElementById("divide-button").disabled = true;
         disableDecimalButton(value);
-        // disableCalculateButton(extractedNumbers);
     } else if (value === "=") {
         const displayContent = screenContent.textContent;
         const values = displayContent.split(currentOperator);
@@ -163,7 +162,7 @@ function displayValue(value) {
         document.getElementById("multiply-button").disabled = false;
         document.getElementById("divide-button").disabled = false;
         document.getElementById("decimal-button").disabled = false;
-        
+
         // After the calculation is complete, call disableCalculateButton
         disableCalculateButton(extractedNumbers);
     } else {
@@ -248,7 +247,6 @@ function extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator) {
         numbersAfterOperator = null;
     }
         
-    // Validates they are numbers
     if (!isNaN(numbersBeforeOperator) && !isNaN(numbersAfterOperator)) {
         return {
             numbersBefore: numbersBeforeOperator,
@@ -257,25 +255,3 @@ function extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator) {
     }
     return null;
 }
-// numbersBeforeOperator and numbersAfterOperator works
-// try console logging with lines 234, 238, 260, and 261 to see behavior.
-
-
-
-
-
-
-
-// this doesnt work, i dont think.
-function disableCalculateButton(extractedNumbers) {
-    if (extractedNumbers) {
-        document.getElementById("calculate-button").disabled = false;
-        console.log("Numbers before symbol:", extractedNumbers.numbersBefore);
-        console.log("Numbers after symbol:", extractedNumbers.numbersAfter);
-        console.log()
-    } else {
-        document.getElementById("calculate-button").disabled = true;
-        console.log("Symbol not found or invalid numbers.");
-    }
-}
-disableCalculateButton(extractedNumbers);
