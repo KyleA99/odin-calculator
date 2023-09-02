@@ -2,6 +2,7 @@ const displayValuesArray = [];
 let firstNumber = 0;
 let secondNumber = 0;
 let currentOperator = "";
+let numbersAfterOperator = null;
 
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
@@ -163,13 +164,14 @@ function displayValue(value) {
         document.getElementById("divide-button").disabled = false;
         document.getElementById("decimal-button").disabled = false;
 
-        // After the calculation is complete, call disableCalculateButton
-        disableCalculateButton(extractedNumbers);
+        // After the calculation is complete, call disableCalculateButton with valid values
+        disableCalculateButton(firstNumber, secondNumber, currentOperator);
     } else {
-        // If it's a digit or decimal point, call disableCalculateButton
-        disableCalculateButton(extractNumbersBeforeAndAfterSymbol(screenContent.textContent, currentOperator));
+        // If it's a digit or decimal point, call disableCalculateButton with valid values
+        disableCalculateButton(firstNumber, secondNumber, currentOperator);
     }
 }
+
 
 /**
  * Rounds a number to a specified number of decimal places.
@@ -234,17 +236,19 @@ function extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator) {
 
     if (!currentOperator) {
         numbersBeforeOperator = displayContent;
-        // console.log(numbersBeforeOperator);
+        console.log(numbersBeforeOperator);
     } else {
         numbersBeforeOperator = parseInt(parts[0], 10);
-        // console.log(numbersBeforeOperator);
+        console.log(numbersBeforeOperator);
     }
 
     if (currentOperator) {
         numbersAfterOperator = parseInt(parts[1], 10);
-        // console.log(numbersAfterOperator);
+        console.log(numbersAfterOperator);
+        disableCalculateButton(parseInt(parts[1], 10));
     } else {
         numbersAfterOperator = null;
+        disableCalculateButton(null);
     }
         
     if (!isNaN(numbersBeforeOperator) && !isNaN(numbersAfterOperator)) {
@@ -255,3 +259,13 @@ function extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator) {
     }
     return null;
 }
+
+function disableCalculateButton(firstNumber, secondNumber, operator) {
+    if (!isNaN(firstNumber) && !isNaN(secondNumber) && operator) {
+        document.getElementById("calculate-button").disabled = false;
+    } else {
+        document.getElementById("calculate-button").disabled = true;
+    }
+}
+
+// disableCalculateButton works for first operation, but stays enabled for subsequent operations
