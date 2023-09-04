@@ -4,6 +4,7 @@ let secondNumber = 0;
 let currentOperator = "";
 let numbersBeforeOperator;
 let numbersAfterOperator;
+let decimalAdded = false;
 
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
@@ -150,7 +151,6 @@ function displayValue(value) {
         document.getElementById("multiply-button").disabled = true;
         document.getElementById("divide-button").disabled = true;
         disableDecimalButton(value);
-        // Extract numbers before and after symbol when operator is clicked
         extractNumbersBeforeAndAfterSymbol(screenContent.textContent, currentOperator);
     } else if (value === "=") {
         const displayContent = screenContent.textContent;
@@ -171,11 +171,9 @@ function displayValue(value) {
         document.getElementById("divide-button").disabled = false;
         document.getElementById("decimal-button").disabled = false;
         
-        // Extract numbers before and after symbol when "=" is clicked
         extractNumbersBeforeAndAfterSymbol(screenContent.textContent, currentOperator);
     } else {
         disableCalculateButton();
-        // If it's a digit, update numbersAfterOperator
         if (!isNaN(value)) {
             const currentContent = screenContent.textContent;
             const indexOfOperator = currentContent.lastIndexOf(currentOperator);
@@ -240,7 +238,6 @@ function disableDecimalButton(value) {
 }
 
 const extractedNumbers = extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator);
-
 /**
  * Extracts numbers before and after the specified operator from the display content.
  *
@@ -253,16 +250,12 @@ function extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator) {
 
     if (!currentOperator) {
         numbersBeforeOperator = displayContent;
-        // console.log(displayContent);
-        // console.log("before", numbersBeforeOperator);
     } else {
         numbersBeforeOperator = parseFloat(parts[0], 10);
-        // console.log("before", numbersBeforeOperator);
     }
 
     if (currentOperator) {
         numbersAfterOperator = parseFloat(parts[1], 10);
-        // console.log("after", numbersAfterOperator);
     } else {
         numbersAfterOperator = null;
     }
@@ -283,10 +276,6 @@ function disableCalculateButton() {
     const isOperatorValid = (currentOperator) && (currentOperator !== "=");
     const isFirstNumberValid = !isNaN(numbersBeforeOperator);
     const isSecondNumberValid = !isNaN(numbersAfterOperator);
-
-    // console.log(isOperatorValid);
-    // console.log(numbersBeforeOperator);
-    // console.log(numbersAfterOperator);
     
     if (isOperatorValid && isFirstNumberValid && isSecondNumberValid) {
         document.getElementById("calculate-button").disabled = false;
