@@ -119,17 +119,20 @@ function divideOperands(firstNumber, secondNumber) {
  */
 function initializeOperation(firstNumber, secondNumber, currentOperator) {
     try {
-        if (currentOperator === "+") {
-            return addOperands(firstNumber, secondNumber);
-        } else if (currentOperator === "-") {
-            return subtractOperands(firstNumber, secondNumber);
-        } else if (currentOperator === "*") {
-            return multiplyOperands(firstNumber, secondNumber);
-        } else if (currentOperator === "÷") {
-            if (secondNumber === 0) {
-                throw new Error("Division by zero");
-            }
-            return divideOperands(firstNumber, secondNumber);
+        switch (currentOperator) {
+            case "+":
+                return addOperands(firstNumber, secondNumber);
+            case "-":
+                return subtractOperands(firstNumber, secondNumber);
+            case "*":
+                return multiplyOperands(firstNumber, secondNumber);
+            case "÷":
+                if (secondNumber === 0) {
+                    throw new Error("Division by zero");
+                }
+                return divideOperands(firstNumber, secondNumber);
+            default:
+                throw new Error("Invalid operator");
         }
     } catch (error) {
         alert("Error: " + error.message);
