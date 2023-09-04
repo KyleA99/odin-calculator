@@ -241,6 +241,13 @@ function disableDecimalButton(value) {
 
 const extractedNumbers = extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator);
 
+/**
+ * Extracts numbers before and after the specified operator from the display content.
+ *
+ * @param {string} displayContent - The content displayed on the screen.
+ * @param {string} currentOperator - The current operator (e.g., "+", "-", "*", "÷").
+ * @returns {object|null} An object containing `numbersBefore` and `numbersAfter`, or `null` if the extraction fails.
+ */
 function extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator) {
     const parts = displayContent.split(currentOperator);
 
@@ -269,14 +276,17 @@ function extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator) {
     return null;
 }
 
+/**
+ * Disables the "Calculate" button based on the validity of the operator and numbers.
+ */
 function disableCalculateButton() {
     const isOperatorValid = (currentOperator) && (currentOperator !== "=");
     const isFirstNumberValid = !isNaN(numbersBeforeOperator);
     const isSecondNumberValid = !isNaN(numbersAfterOperator);
 
-    console.log(isOperatorValid);
-    console.log(numbersBeforeOperator);
-    console.log(numbersAfterOperator);
+    // console.log(isOperatorValid);
+    // console.log(numbersBeforeOperator);
+    // console.log(numbersAfterOperator);
     
     if (isOperatorValid && isFirstNumberValid && isSecondNumberValid) {
         document.getElementById("calculate-button").disabled = false;
