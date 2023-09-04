@@ -10,12 +10,12 @@ const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
 const displayContent = screenContent.textContent;
 screenContent.classList.add("screenContent");
-screenContent.textContent = initializeEventListeners();
+screenContent.textContent = setupButtonEventListeners();
 screen.appendChild(screenContent);
 /**
  * Sets event listeners to assign values to buttons.
  */
-function initializeEventListeners() {
+function setupButtonEventListeners() {
     const buttons = [
         { id: "zero-button", value: 0 },
         { id: "one-button", value: 1 },
@@ -39,14 +39,14 @@ function initializeEventListeners() {
         const buttonElement = document.getElementById(button.id);
         buttonElement.addEventListener("click", function() {
             if (button.value === ".") {
-                displayValue(".");
-                disableDecimalButton(".");
-                disableCalculateButton();
-                extractNumbersBeforeAndAfterSymbol(screenContent.textContent, currentOperator);
+                appendToScreenAndPushToArray(".");
+                toggleDecimalButtonState(".");
+                updateCalculateButtonState();
+                extractNumbersAroundOperator(screenContent.textContent, currentOperator);
             } else {
-                displayValue(button.value);
-                disableCalculateButton();
-                extractNumbersBeforeAndAfterSymbol(screenContent.textContent, currentOperator);
+                appendToScreenAndPushToArray(button.value);
+                updateCalculateButtonState();
+                extractNumbersAroundOperator(screenContent.textContent, currentOperator);
             }
         });
     });
@@ -140,7 +140,7 @@ function initializeOperation(firstNumber, secondNumber, currentOperator) {
  * Updates the content displayed on the screen and pushes the value to displayValuesArray.
  * @param {string} value - The digit or character to be displayed on the screen.
  */
-function displayValue(value) {
+function appendToScreenAndPushToArray(value) {
     screenContent.textContent += value;
     displayValuesArray.push(screenContent.textContent);
 
@@ -150,8 +150,8 @@ function displayValue(value) {
         document.getElementById("subtract-button").disabled = true;
         document.getElementById("multiply-button").disabled = true;
         document.getElementById("divide-button").disabled = true;
-        disableDecimalButton(value);
-        extractNumbersBeforeAndAfterSymbol(screenContent.textContent, currentOperator);
+        toggleDecimalButtonState(value);
+        extractNumbersAroundOperator(screenContent.textContent, currentOperator);
     } else if (value === "=") {
         const displayContent = screenContent.textContent;
         const values = displayContent.split(currentOperator);
@@ -171,9 +171,9 @@ function displayValue(value) {
         document.getElementById("divide-button").disabled = false;
         document.getElementById("decimal-button").disabled = false;
         
-        extractNumbersBeforeAndAfterSymbol(screenContent.textContent, currentOperator);
+        extractNumbersAroundOperator(screenContent.textContent, currentOperator);
     } else {
-        disableCalculateButton();
+        updateCalculateButtonState();
         if (!isNaN(value)) {
             const currentContent = screenContent.textContent;
             const indexOfOperator = currentContent.lastIndexOf(currentOperator);
@@ -194,11 +194,11 @@ function roundResult(number) {
 }
 
 const clearButton = document.getElementById("clear-button");
-clearButton.addEventListener("click", clearScreen);
+clearButton.addEventListener("click", clearCalculatorScreen);
 /**
  * Clears screen and resets variables and arrays.
  */
-function clearScreen() {
+function clearCalculatorScreen() {
     screenContent.textContent = "";
     displayValuesArray.length = 0;
     firstNumber = 0;
@@ -209,11 +209,11 @@ function clearScreen() {
 }
 
 const backspaceButton = document.getElementById("backspace-button");
-backspaceButton.addEventListener("click", deleteCharacter);
+backspaceButton.addEventListener("click", deleteLastCharacterFromScreen);
 /**
  * Slices off the right-most character.
  */
-function deleteCharacter() {
+function deleteLastCharacterFromScreen() {
     let content = screenContent.textContent;
 
     if (content.length > 0) {
@@ -229,7 +229,7 @@ function deleteCharacter() {
  * Disables or enables the decimal button based on the given value.
  * @param {string} value - The value to determine if the decimal button should be disabled.
  */
-function disableDecimalButton(value) {
+function toggleDecimalButtonState(value) {
     if (value === ".") {
         document.getElementById("decimal-button").disabled = true;
     } else if (value === "+" || value === "-" || value === "*" || value === "÷" || value === "=") {
@@ -237,7 +237,7 @@ function disableDecimalButton(value) {
     }
 }
 
-const extractedNumbers = extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator);
+const extractedNumbers = extractNumbersAroundOperator(displayContent, currentOperator);
 /**
  * Extracts numbers before and after the specified operator from the display content.
  *
@@ -245,7 +245,7 @@ const extractedNumbers = extractNumbersBeforeAndAfterSymbol(displayContent, curr
  * @param {string} currentOperator - The current operator (e.g., "+", "-", "*", "÷").
  * @returns {object|null} An object containing `numbersBefore` and `numbersAfter`, or `null` if the extraction fails.
  */
-function extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator) {
+function extractNumbersAroundOperator(displayContent, currentOperator) {
     const parts = displayContent.split(currentOperator);
 
     if (!currentOperator) {
@@ -272,7 +272,7 @@ function extractNumbersBeforeAndAfterSymbol(displayContent, currentOperator) {
 /**
  * Disables the "Calculate" button based on the validity of the operator and numbers.
  */
-function disableCalculateButton() {
+function updateCalculateButtonState() {
     const isOperatorValid = (currentOperator) && (currentOperator !== "=");
     const isFirstNumberValid = !isNaN(numbersBeforeOperator);
     const isSecondNumberValid = !isNaN(numbersAfterOperator);
@@ -283,4 +283,4 @@ function disableCalculateButton() {
         document.getElementById("calculate-button").disabled = true;
     }
 }
-disableCalculateButton();
+updateCalculateButtonState();
