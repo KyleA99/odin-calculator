@@ -228,18 +228,6 @@ function deleteLastCharacterFromScreen() {
     }
 }
 
-/**
- * Disables or enables the decimal button based on the given value.
- * @param {string} value - The value to determine if the decimal button should be disabled.
- */
-function toggleDecimalButtonState(value) {
-    if (value === ".") {
-        document.getElementById("decimal-button").disabled = true;
-    } else if (value === "+" || value === "-" || value === "*" || value === "÷" || value === "=") {
-        document.getElementById("decimal-button").disabled = false;
-    }
-}
-
 const extractedNumbers = extractNumbersAroundOperator(displayContent, currentOperator);
 /**
  * Extracts numbers before and after the specified operator from the display content.
@@ -279,6 +267,7 @@ function updateCalculateButtonState() {
     const isOperatorValid = (currentOperator) && (currentOperator !== "=");
     const isFirstNumberValid = !isNaN(numbersBeforeOperator);
     const isSecondNumberValid = !isNaN(numbersAfterOperator);
+    // console.log(typeof numbersBeforeOperator);
     
     if (isOperatorValid && isFirstNumberValid && isSecondNumberValid) {
         document.getElementById("calculate-button").disabled = false;
