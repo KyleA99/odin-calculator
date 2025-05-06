@@ -168,6 +168,9 @@ function initializeOperation(firstNumber, secondNumber, currentOperator) {
  */
 function appendToScreenAndPushToArray(value) {
     screenContent.textContent += value;
+
+    deleteLeadingZeroFromScreen();
+
     displayValuesArray.push(screenContent.textContent);
 
     if (value === "+" || value === "-" || value === "*" || value === "÷") {
@@ -256,6 +259,21 @@ function deleteLastCharacterFromScreen() {
 
 
 /**
+ * Removes leading 0 values from our screenContent.
+ */
+function deleteLeadingZeroFromScreen() {
+    let content = screenContent.textContent;
+
+    if (content.length > 1 && content.charAt(0) == 0) {
+        content = content.slice(1);
+
+        screenContent.textContent = content;
+    }
+}
+
+
+
+/**
  * Extracts numbers before and after the specified operator from the display content.
  *
  * @param {string} displayContent - The content displayed on the screen.
@@ -308,7 +326,6 @@ updateCalculateButtonState();
 
 
 
-// need to clear the 0 in front of numbers if i solve something and the answer is 0
 // also the solved answer on the screen should be cleared if i press a number button after
     // e.g. 5 x 2 = 10. i press 3 and it makes it 103
 // disabled decimal button if the screen already has a decimal in it
