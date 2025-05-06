@@ -170,6 +170,8 @@ function appendToScreenAndPushToArray(value) {
     screenContent.textContent += value;
 
     deleteLeadingZeroFromScreen();
+    
+    limitScreenLength();
 
     displayValuesArray.push(screenContent.textContent);
 
@@ -325,9 +327,20 @@ updateCalculateButtonState();
 
 
 
+/**
+ * Limits the number of characters allowed on the screen to be 24.
+ */
+function limitScreenLength() {
+    let content = screenContent.textContent;
+
+    if (content.length > 24) {
+        deleteLastCharacterFromScreen();
+    }
+}
+
 
 // also the solved answer on the screen should be cleared if i press a number button after
     // e.g. 5 x 2 = 10. i press 3 and it makes it 103
-// disabled decimal button if the screen already has a decimal in it
+// disabled decimal button if the screen already has a decimal in it - well we still want to be able to have a decimal in the secondNumber
 // operator buttons stay disabled if i already click one (cant even use negative values because of this)
 // add some type of validation to limit the number of characters allowed on the screen
