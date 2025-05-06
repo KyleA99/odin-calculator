@@ -12,6 +12,15 @@ const displayContent = screenContent.textContent;
 screenContent.classList.add("screenContent");
 screenContent.textContent = setupButtonEventListeners();
 screen.appendChild(screenContent);
+
+const clearButton = document.getElementById("clear-button");
+clearButton.addEventListener("click", clearCalculatorScreen);
+
+const backspaceButton = document.getElementById("backspace-button");
+backspaceButton.addEventListener("click", deleteLastCharacterFromScreen);
+
+
+
 /**
  * Sets event listeners to assign values to buttons.
  */
@@ -52,10 +61,12 @@ function setupButtonEventListeners() {
     });
 }
 
+
+
 /**
  * Validates whether the provided values are valid numbers.
  * @param {...(number | string)} numbers - The values to be validated.
- * @throws {Error} Throws an error if any of the provided values is not a valid number.
+ * @throws {Error} Throws an error if any of the provided values are not a valid number.
  */
 function validateNumbers(...numbers) {
     numbers.forEach(number => {
@@ -65,6 +76,8 @@ function validateNumbers(...numbers) {
         }
     });
 }
+
+
 
 /**
  * Adds two numbers together and returns the result.
@@ -77,6 +90,8 @@ function addOperands(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
 }
 
+
+
 /**
  * Subtracts the second number from the first number and returns the result.
  * @param {number} firstNumber - The number from which the second number will be subtracted. Can be an integer or floating-point number.
@@ -87,6 +102,8 @@ function subtractOperands(firstNumber, secondNumber) {
     validateNumbers(firstNumber, secondNumber);
     return firstNumber - secondNumber;
 }
+
+
 
 /**
  * Multiplies two numbers together and returns the result.
@@ -99,6 +116,8 @@ function multiplyOperands(firstNumber, secondNumber) {
     return firstNumber * secondNumber;
 }
 
+
+
 /**
  * Divides the first number by the second number and returns the result.
  * @param {number} firstNumber - The number to be divided. Can be an integer or floating-point number.
@@ -109,6 +128,8 @@ function divideOperands(firstNumber, secondNumber) {
     validateNumbers(firstNumber, secondNumber);
     return firstNumber / secondNumber;
 }
+
+
 
 /**
  * Performs an arithmetic operation on two numbers based on the given operator and returns the result.
@@ -138,6 +159,8 @@ function initializeOperation(firstNumber, secondNumber, currentOperator) {
         alert("Error: " + error.message);
     }
 }
+
+
 
 /**
  * Updates the content displayed on the screen and pushes the value to displayValuesArray.
@@ -187,6 +210,8 @@ function appendToScreenAndPushToArray(value) {
     }
 }
 
+
+
 /**
  * Rounds a number to a specified number of decimal places.
  * @param {number} number - The number to be rounded. Can be an integer or floating-point number.
@@ -196,8 +221,8 @@ function roundResult(number) {
     return Math.round(number * 100000) / 100000;
 }
 
-const clearButton = document.getElementById("clear-button");
-clearButton.addEventListener("click", clearCalculatorScreen);
+
+
 /**
  * Clears screen and resets variables and arrays.
  */
@@ -211,8 +236,8 @@ function clearCalculatorScreen() {
     isSecondNumberDecimal = false;
 }
 
-const backspaceButton = document.getElementById("backspace-button");
-backspaceButton.addEventListener("click", deleteLastCharacterFromScreen);
+
+
 /**
  * Slices off the right-most character.
  */
@@ -228,7 +253,8 @@ function deleteLastCharacterFromScreen() {
     }
 }
 
-const extractedNumbers = extractNumbersAroundOperator(displayContent, currentOperator);
+
+
 /**
  * Extracts numbers before and after the specified operator from the display content.
  *
@@ -260,6 +286,8 @@ function extractNumbersAroundOperator(displayContent, currentOperator) {
     return null;
 }
 
+
+
 /**
  * Disables the "Calculate" button based on the validity of the operator and numbers.
  */
@@ -276,3 +304,13 @@ function updateCalculateButtonState() {
     }
 }
 updateCalculateButtonState();
+
+
+
+
+// need to clear the 0 in front of numbers if i solve something and the answer is 0
+// also the solved answer on the screen should be cleared if i press a number button after
+    // e.g. 5 x 2 = 10. i press 3 and it makes it 103
+// disabled decimal button if the screen already has a decimal in it
+// operator buttons stay disabled if i already click one (cant even use negative values because of this)
+// add some type of validation to limit the number of characters allowed on the screen
