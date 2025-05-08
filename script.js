@@ -8,18 +8,14 @@ let decimalAdded = false;
 
 const screen = document.querySelector("#screen");
 const screenContent = document.createElement("div");
-const displayContent = screenContent.textContent;
 screenContent.classList.add("screenContent");
-screenContent.textContent = setupButtonEventListeners();
+screenContent.textContent = "";
 screen.appendChild(screenContent);
 
-const clearButton = document.getElementById("clear-button");
-clearButton.addEventListener("click", clearCalculatorScreen);
+setupButtonEventListeners();
 
-const backspaceButton = document.getElementById("backspace-button");
-backspaceButton.addEventListener("click", deleteLastCharacterFromScreen);
-
-
+document.getElementById("clear-button").addEventListener("click", clearCalculatorScreen);
+document.getElementById("backspace-button").addEventListener("click", deleteLastCharacterFromScreen);
 
 /**
  * Sets event listeners to assign values to buttons.
@@ -315,7 +311,6 @@ function updateCalculateButtonState() {
     const isOperatorValid = (currentOperator) && (currentOperator !== "=");
     const isFirstNumberValid = !isNaN(numbersBeforeOperator);
     const isSecondNumberValid = !isNaN(numbersAfterOperator);
-    // console.log(typeof numbersBeforeOperator);
     
     if (isOperatorValid && isFirstNumberValid && isSecondNumberValid) {
         document.getElementById("calculate-button").disabled = false;
