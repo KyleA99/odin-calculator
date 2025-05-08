@@ -83,6 +83,7 @@ function validateNumbers(...numbers) {
  */
 function addOperands(firstNumber, secondNumber) {
     validateNumbers(firstNumber, secondNumber);
+
     return firstNumber + secondNumber;
 }
 
@@ -96,6 +97,7 @@ function addOperands(firstNumber, secondNumber) {
  */
 function subtractOperands(firstNumber, secondNumber) {
     validateNumbers(firstNumber, secondNumber);
+
     return firstNumber - secondNumber;
 }
 
@@ -109,6 +111,7 @@ function subtractOperands(firstNumber, secondNumber) {
  */
 function multiplyOperands(firstNumber, secondNumber) {
     validateNumbers(firstNumber, secondNumber);
+
     return firstNumber * secondNumber;
 }
 
@@ -122,6 +125,7 @@ function multiplyOperands(firstNumber, secondNumber) {
  */
 function divideOperands(firstNumber, secondNumber) {
     validateNumbers(firstNumber, secondNumber);
+
     return firstNumber / secondNumber;
 }
 
@@ -298,6 +302,7 @@ function extractNumbersAroundOperator(displayContent, currentOperator) {
             numbersAfter: numbersAfterOperator
         };
     }
+    
     return null;
 }
 
@@ -336,7 +341,6 @@ function limitScreenLength() {
 
 /**
  * Prevents each firstNumber and secondNumber from containing more than one decimal character.
- * 
  */
 function toggleDecimalButtonState() {
     const operators = ["+", "-", "*", "÷"];
