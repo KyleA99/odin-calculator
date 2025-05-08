@@ -45,7 +45,7 @@ function setupButtonEventListeners() {
         buttonElement.addEventListener("click", function() {
             if (button.value === ".") {
                 appendToScreenAndPushToArray(".");
-                toggleDecimalButtonState(".");
+                toggleDecimalButtonState();
                 updateCalculateButtonState();
                 extractNumbersAroundOperator(screenContent.textContent, currentOperator);
             } else {
@@ -177,7 +177,7 @@ function appendToScreenAndPushToArray(value) {
         document.getElementById("subtract-button").disabled = true;
         document.getElementById("multiply-button").disabled = true;
         document.getElementById("divide-button").disabled = true;
-        toggleDecimalButtonState(value);
+        toggleDecimalButtonState();
         extractNumbersAroundOperator(screenContent.textContent, currentOperator);
     } else if (value === "=") {
         const displayContent = screenContent.textContent;
@@ -246,7 +246,6 @@ function deleteLastCharacterFromScreen() {
     let content = screenContent.textContent;
 
     if (content.length > 0) {
-        // Remove the last character from the content by slicing content to be from beginning (0) to the second-to-last characer (-1)
         content = content.slice(0, -1);
 
         screenContent.textContent = content;
@@ -334,8 +333,32 @@ function limitScreenLength() {
 }
 
 
+
+/**
+ * Prevents each firstNumber and secondNumber from containing more than one decimal character.
+ * 
+ */
+function toggleDecimalButtonState() {
+    const operators = ["+", "-", "*", "÷"];
+    const content = screenContent.textContent;
+
+    let lastOperatorIndex = -1;
+
+    // Find last occurring operator to identify the current number
+    for (let operator of operators) {
+        const index = content.lastIndexOf(operator);
+        if (index > lastOperatorIndex) {
+            lastOperatorIndex = index;
+        }
+    }
+
+    const currentNumber = content.slice(lastOperatorIndex + 1);
+
+    const hasDecimal = currentNumber.includes(".");
+    document.getElementById("decimal-button").disabled = hasDecimal;
+}
+
 // also the solved answer on the screen should be cleared if i press a number button after
     // e.g. 5 x 2 = 10. i press 3 and it makes it 103
-// disabled decimal button if the screen already has a decimal in it - well we still want to be able to have a decimal in the secondNumber
 // operator buttons stay disabled if i already click one (cant even use negative values because of this)
-// add some type of validation to limit the number of characters allowed on the screen
+// break up code into separate files based off logic
