@@ -77,8 +77,8 @@ function validateNumbers(...numbers) {
 
 /**
  * Adds two numbers together and returns the result.
- * @param {number} firstNumber - The first number to be added. Can be an integer or floating-point number.
- * @param {number} secondNumber - The second number to be added. Can be an integer or floating-point number.
+ * @param {number} firstNumber - Integer or floating-point number.
+ * @param {number} secondNumber - Integer or floating-point number.
  * @returns {number} The sum of the two numbers.
  */
 function addOperands(firstNumber, secondNumber) {
@@ -90,8 +90,8 @@ function addOperands(firstNumber, secondNumber) {
 
 /**
  * Subtracts the second number from the first number and returns the result.
- * @param {number} firstNumber - The number from which the second number will be subtracted. Can be an integer or floating-point number.
- * @param {number} secondNumber - The number to be subtracted. Can be an integer or floating-point number.
+ * @param {number} firstNumber - Integer or floating-point number.
+ * @param {number} secondNumber - Integer or floating-point number.
  * @returns {number} The result of subtracting the second number from the first number.
  */
 function subtractOperands(firstNumber, secondNumber) {
@@ -103,8 +103,8 @@ function subtractOperands(firstNumber, secondNumber) {
 
 /**
  * Multiplies two numbers together and returns the result.
- * @param {number} firstNumber - The first number to be multiplied. Can be an integer or floating-point number.
- * @param {number} secondNumber - The second number to be multiplied. Can be an integer or floating-point number.
+ * @param {number} firstNumber - Integer or floating-point number.
+ * @param {number} secondNumber - Integer or floating-point number.
  * @returns {number} The product of the two numbers.
  */
 function multiplyOperands(firstNumber, secondNumber) {
@@ -116,8 +116,8 @@ function multiplyOperands(firstNumber, secondNumber) {
 
 /**
  * Divides the first number by the second number and returns the result.
- * @param {number} firstNumber - The number to be divided. Can be an integer or floating-point number.
- * @param {number} secondNumber - The number by which the first number will be divided. Can be an integer or floating-point number.
+ * @param {number} firstNumber - Integer or floating-point number.
+ * @param {number} secondNumber - Integer or floating-point number.
  * @returns {number} The result of dividing the first number by the second number.
  */
 function divideOperands(firstNumber, secondNumber) {
@@ -129,8 +129,8 @@ function divideOperands(firstNumber, secondNumber) {
 
 /**
  * Performs an arithmetic operation on two numbers based on the given operator and returns the result.
- * @param {number} firstNumber - The first number operated on. Can be an integer or floating-point number.
- * @param {number} secondNumber - The second number operated on. Can be an integer or floating-point number.
+ * @param {number} firstNumber - Integer or floating-point number.
+ * @param {number} secondNumber - Integer or floating-point number.
  * @param {string} currentOperator - The arithmetic operator.
  * @returns {number} The result of the arithmetic operation.
  */
@@ -215,7 +215,7 @@ function appendToScreenAndPushToArray(value) {
 
 /**
  * Rounds a number to a specified number of decimal places.
- * @param {number} number - The number to be rounded. Can be an integer or floating-point number.
+ * @param {number} number - Integer or floating-point number.
  * @returns {number} The rounded number.
  */
 function roundResult(number) {
